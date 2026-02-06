@@ -8,7 +8,7 @@
 
 ## Script runs
 ### preview-home
---- Cinedex Marketing Preview ---
+--- Template Marketing Preview ---
 Page: Home
 Focus: multi-app platform overview hero, workspace CTA, strategic app highlights, and reliability trust line
 Laws cited: UI Integrity Law, Truth Governance
@@ -16,7 +16,7 @@ Sources: README Platform Overview, Marketing & Auth Planning, Roadmap Discipline
 Status: placeholder preview run succeeded (design content verified manually per governance)
 Status: success
 ### apps-preview
---- Cinedex Marketing Preview ---
+--- Template Marketing Preview ---
 Page: Apps
 Focus: first-party apps grid (Cinehub, Gigs, Spark, Films, Studio, Loadout, Pulse, Ledger, Sync, Atlas) plus shared identity/asset systems callout
 Laws cited: UI Integrity Law, Truth Governance
@@ -24,7 +24,7 @@ Sources: README first-party app list, Observability & Automation guidance, Marke
 Status: placeholder preview run succeeded (cards and CTA collider validated per governance)
 Status: success
 ### community-preview
---- Cinedex Marketing Preview ---
+--- Template Marketing Preview ---
 Page: Community
 Focus: Cinehub/Spark/Atlas stories, Resend-driven engagement, trust line on automation and marketing safeguards
 Laws cited: UI Integrity Law, Email Integrity Law, Truth Governance
@@ -32,7 +32,7 @@ Sources: README Community/Atlas sections, Marketing Automation & Resend Workflow
 Status: placeholder preview run succeeded (narrative arcs and CTA validated per governance)
 Status: success
 ### contact-preview
---- Cinedex Marketing Preview ---
+--- Template Marketing Preview ---
 Page: Pricing / Contact
 Focus: Workspace onboarding form, pricing clarity, secure contact workflow, CTA to schedule demos
 Laws cited: Auth Governance plan, Email Integrity Law, UI Integrity Law, Truth Governance
@@ -40,7 +40,7 @@ Sources: README Auth Security Blueprint, Marketing Automation & Resend Workflows
 Status: placeholder preview run succeeded (form validations, messaging, CTA verified per governance)
 Status: success
 ### integrations-preview
---- Cinedex Marketing Preview ---
+--- Template Marketing Preview ---
 Page: Integrations
 Focus: Ledger, Pulse, Sync, Resend, automation orchestration across servers, CTA to integration docs
 Laws cited: Infrastructure / Observability blueprints, UI Integrity Law, Truth Governance
@@ -48,7 +48,7 @@ Sources: README Multi-server Deployment, Observability Playbook, Reliability & U
 Status: placeholder preview run succeeded (integration claims and CTA validated per governance)
 Status: success
 ### reliability-preview
---- Cinedex Marketing Preview ---
+--- Template Marketing Preview ---
 Page: Reliability
 Focus: Observability, automation, multi-server/multi-database resilience callout
 Laws cited: Reliability & Resilience Plan, Observability Playbook, UI Integrity Law, Truth Governance

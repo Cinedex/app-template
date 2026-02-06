@@ -13,15 +13,15 @@ _Generated: 2026-02-06T20:40:27Z UTC_
 * Ahead/Behind (master...master): 0	0
 
 ## Merge Notes
-* Automation script: /Users/levielizaga/Sites/cinedex-platform-template/scripts/git-merge-report.sh
-* Remote: https://github.com/Cinedex/cinedex.git
+* Automation script: /Users/levielizaga/Sites/app-platform-template/scripts/git-merge-report.sh
+* Remote: canonical template remote
 
 ## Version Artifact
-* Current version: 0.3.7
-* Previous version: 0.3.6
-* Bumped by: TEMPLATE-FILENAME-NORMALIZATION
-* Created at: 2026-02-06T20:02:52Z UTC
-* Version artifact: /Users/levielizaga/Sites/cinedex-platform-template/VERSION.md
+* Current version: 0.3.8
+* Previous version: 0.3.7
+* Bumped by: TEMPLATE-IDENTITY-SANITIZATION
+* Created at: 2026-02-06T21:25:37Z UTC
+* Version artifact: /Users/levielizaga/Sites/app-platform-template/VERSION.md
 
 ## Governing Laws
 * Merge Reporting Law — documents the artifact so auditors can trace the merge.

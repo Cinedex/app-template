@@ -13,15 +13,15 @@ _Generated: 2026-02-06T17:49:57Z UTC_
 * Ahead/Behind (master...master): 0	0
 
 ## Merge Notes
-* Automation script: /Users/levielizaga/Sites/cinedex/scripts/git-merge-report.sh
-* Remote: https://github.com/Cinedex/cinedex.git
+* Automation script: /Users/levielizaga/Sites/app-platform-template/scripts/git-merge-report.sh
+* Remote: canonical template remote
 
 ## Version Artifact
 * Current version: 0.3.5
 * Previous version: 0.3.4
 * Bumped by: TODO-059 (App Marketplace + Atlas readiness)
 * Created at: 2026-02-06T17:48:34Z UTC
-* Version artifact: /Users/levielizaga/Sites/cinedex/VERSION.md
+* Version artifact: /Users/levielizaga/Sites/app-platform-template/VERSION.md
 
 ## Governing Laws
 * Merge Reporting Law — documents the artifact so auditors can trace the merge.

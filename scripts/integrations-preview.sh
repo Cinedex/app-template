@@ -3,7 +3,7 @@ set -euo pipefail
 
 page="Integrations"
 cat <<END
---- Cinedex Marketing Preview ---
+--- Template Marketing Preview ---
 Page: $page
 Focus: Ledger, Pulse, Sync, Resend, automation orchestration across servers, CTA to integration docs
 Laws cited: Infrastructure / Observability blueprints, UI Integrity Law, Truth Governance

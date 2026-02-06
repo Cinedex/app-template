@@ -3,7 +3,7 @@ set -euo pipefail
 
 page="Home"
 cat <<END
---- Cinedex Marketing Preview ---
+--- Template Marketing Preview ---
 Page: $page
 Focus: multi-app platform overview hero, workspace CTA, strategic app highlights, and reliability trust line
 Laws cited: UI Integrity Law, Truth Governance

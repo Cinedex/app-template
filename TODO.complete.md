@@ -4,13 +4,19 @@
 - **Verification:** `bash scripts/verify-roadmap-sync.sh`, `bash scripts/verify-version-sync.sh`, `bash scripts/process-integrity-sweep.sh`, `bash scripts/update_tree.sh`, `bash scripts/git-branch-log.sh`, `bash scripts/git-merge-report.sh master master` (merge report `git/merge-reports/merge-report-master-20260206T200624Z.md` cites `VERSION.md`; deterministic bump 0.3.5 → 0.3.6 recorded in `VERSION.md`).
 - **Preflight state:** TODO-059 remained queued, TODO-000 served as the idle placeholder, and the details-driven backlog awaited the template-extraction normalization so the canonical queue stayed future-only while the run documented the guard rails.
 
+## TEMPLATE-IDENTITY-SANITIZATION (Template Identity Sanitization)
+- **Goal:** Remove every remaining product-specific reference so the template repo stays app-neutral, update the version artifact, and keep governance/automation behavior unchanged.
+- **Files touched:** README.md, GOVERNANCE.md, CODEX.manager.md, CODEX.worker.md, APP.details.md, ROADMAP.md, TODO.complete.md, TODO.md, VERSION.md, authority/laws.md, git/workflow.md, git/branches.md, git/merge-reports/merge-report-master-20260206T204027Z.md, scripts/git-merge-report.sh, scripts/logs/error-incidents.md, scripts/logs/marketing-outreach-run.md, scripts/community-preview.sh, scripts/preview-home.sh, scripts/apps-preview.sh, scripts/reliability-preview.sh, scripts/contact-preview.sh, scripts/integrations-preview.sh, scripts/roadmap-preview.sh, queue.md, TREE.md.
+- **Verification:** `bash scripts/update_tree.sh`, `bash scripts/verify-roadmap-sync.sh`, `bash scripts/verify-version-sync.sh`, and `bash scripts/process-integrity-sweep.sh` all pass; a case-insensitive search for the former brand returns zero hits; VERSION.md now reports 0.3.8.0 with TEMPLATE-IDENTITY-SANITIZATION as the bump reason.
+- **Notes:** The root folder is now `app-platform-template`, every marketing preview header and documentation section uses neutral language, and all automation/governance behavior stayed intact while the identity layer was sanitized.
+
 ## TEMPLATE-FILENAME-NORMALIZATION
-- **Goal:** Rename `Cinedex.details.md` and `CINEDEX.ROADMAP.md` to their `APP.*` counterparts without altering canonical execution artifacts so the template repo stays app-neutral.
+- **Goal:** Rename `APP.details.md` and `APP.ROADMAP.md` to their `APP.*` counterparts without altering canonical execution artifacts so the template repo stays app-neutral.
 - **Files touched:** `APP.details.md`, `APP.ROADMAP.md`, `README.md`, `GOVERNANCE.md`, `CODEX.worker.md`, `TODO.md`, `TODO.complete.md`, `ROADMAP.md`, `queue.md`, `TREE.md`, `VERSION.md`, `git/branches.md`.
 - **Verification:** `bash scripts/update_tree.sh`, `bash scripts/verify-roadmap-sync.sh`, `bash scripts/verify-version-sync.sh`, and `bash scripts/process-integrity-sweep.sh` pass after the rename; merge report `git/merge-reports/merge-report-master-20260206T204027Z.md` now references `VERSION.md` at 0.3.7 and the `TEMPLATE-FILENAME-NORMALIZATION` identifier.
 
 ## TODO-059 (App Marketplace + Atlas readiness)
-- **Goal:** Codify App Marketplace and Atlas guard rails, ensure README/Cinedex.details/queue/authority entries describe the integration criteria, and tie the automation logs to the law references before unveiling the next implementation wave.
+- **Goal:** Codify App Marketplace and Atlas guard rails, ensure README/APP.details/queue/authority entries describe the integration criteria, and tie the automation logs to the law references before unveiling the next implementation wave.
 - **Files touched:** `README.md`, `APP.details.md`, `queue.md`, `TODO.md`, `TODO.complete.md`, `authority/laws.md`, `ROADMAP.md`, `VERSION.md`, `features/FEATURE.REGISTRY.md`, `git/merge-reports/merge-report-master-20260206T174957Z.md`.
 - **Verification:** `bash scripts/verify-version-sync.sh`, `bash scripts/verify-roadmap-sync.sh`, `bash scripts/process-integrity-sweep.sh`, `bash scripts/update_tree.sh`, `bash scripts/git-branch-log.sh`, `bash scripts/git-merge-report.sh master master` (`git/merge-reports/merge-report-master-20260206T174957Z.md` cites `VERSION.md` and the App Marketplace & Atlas Readiness Law); deterministic version bump 0.3.4 → 0.3.5 recorded in `VERSION.md`.
 - **Preflight state:** TODO-058 completed with the queue/roadmap aligned, the backlog listed TODO-059/057/069, and the guard rails awaited the marketplace/Atlas readiness review.
@@ -30,7 +36,7 @@
 - **Date:** 2026-02-06 12:05 MST
 - **LLM readiness:** Pass—README/GOV details prompt normalization, rate-limit observability, and the Process Integrity/Observability/LLM guard rails required for templating the LLM layer.
 - **Automation readiness:** Pass—README inventories the automation trio, gates, and ownership; managers/workers already cite integrity/roadmap/version/merge-report sweeps.
-- **Worker readiness:** Pass—CODEX.worker roles remain app-agnostic, and the steward/manager responsibilities already presume template-level handoffs (no Cinedex-only blockers noted).
+- **Worker readiness:** Pass—CODEX.worker roles remain app-agnostic, and the steward/manager responsibilities already presume template-level handoffs (no platform-specific blockers noted).
 - **Governance clarity:** Pass—README/ROADMAP clearly declare Phase-1.5 as the gated template-extraction transition and stress that no new TODOs activate here.
 - **Notes:** No TODO activated, no VERSION bump, queue unchanged, Phase-1.5 remains gated; this audit documents readiness for future template work without executing it today.
 
@@ -192,9 +198,9 @@
 - **Verification:** README/queue/governance sections now point to the reverse-chronological roadmap catalog with MST timestamps, `ROADMAP.md`/`TODO.md`/`queue.md` stay synchronized, and `scripts/logs/marketing-outreach-run.md`, `scripts/logs/worker-coordinator.md`, `scripts/logs/error-incidents.md`, and `scripts/logs/sequencer-batch-042.md` were reviewed for current entries. `scripts/update_tree.sh` and `scripts/git-branch-log.sh` ran cleanly after the roadmap rewrite, the Coordinator log confirms the roster review + merge cadence, and the Sequencer’s verification expectations cite the new catalog before closing the batch.
 
 ## TODO-001
-- **Goal:** Define and lock the official Cinedex platform scope and first-party app list.
+- **Goal:** Define and lock the official platform scope and first-party app list.
 - **Files touched:** `README.md`.
-- **Verification:** README defines Cinedex as the modular, workspace-aware multi-app platform, lists the first-party apps and shared features, calls out Nubook as the deprecated former name, labels this repo as the CONTROL + ORCHESTRATION workspace, and embeds the detailed roadmap discipline statements.
+- **Verification:** README defines the platform as the modular, workspace-aware multi-app system, lists the first-party apps and shared features, labels this repo as the CONTROL + ORCHESTRATION workspace, and embeds the detailed roadmap discipline statements.
 
 ## TODO-002
 - **Goal:** Fortify Phase 0 content so the Platform Foundation is aligned with the Codex workflow and roadmap structure.
@@ -287,12 +293,12 @@
 - **Verification:** README now includes the Spark Narrative Bridge blueprint with pitch-to-production flows, media relay automation, reliability/observability instrumentation tied to TODO-009 and TODO-013, and clean UX/governance guardrails; the section documents multi-server/multi-database prep (Spark cluster, shared gateway, Films services) plus verification automation notes, the Recommended Next TODOs list now starts at TODO-020 while TODO-020 is active, and the roadmap discipline paragraph names TODO-020 as the current priority.
 
 ## TODO-020
-- **Goal:** Define the Parallel Track Atlas Knowledge & Integrations blueprint that keeps the public education library trustworthy, compliant, and deeply integrated with Cinedex while preparing for future LLM governance (TODO-021).
+- **Goal:** Define the Parallel Track Atlas Knowledge & Integrations blueprint that keeps the public education library trustworthy, compliant, and deeply integrated with the platform while preparing for future LLM governance (TODO-021).
 - **Files touched:** `README.md`.
 - **Verification:** README now documents the Atlas knowledge curation, partner distribution, and integration/compliance workstreams with multi-server/multi-database references, automation verifications (TODO-009), and observability signals (TODO-013); it includes the Worker Coverage & Documentation and LLM Governance & Safeguards sections so every change is truth-checked, governance-reviewed, and automations/logs are captured, the Recommended Next TODOs list now starts at TODO-021, and the roadmap discipline paragraph names TODO-021 as the current priority.
 
 ## TODO-021
-- **Goal:** Define the LLM Integration Framework that brings a trusted assistant into Cinedex with deterministic governance, automation, and multi-server readiness.
+- **Goal:** Define the LLM Integration Framework that brings a trusted assistant into the platform with deterministic governance, automation, and multi-server readiness.
 - **Files touched:** `README.md`, `GOVERNANCE.md`.
 - **Verification:** README now captures the LLM Governance & Safeguards (prompt/policy controls, automation logging, observability hooks, rollback scripts) and Governance enforces LLM integration requirements as well as auth safeguards; the Recommended Next TODOs list begins at TODO-022 while TODO-022 is active, and the roadmap discipline paragraph names TODO-022 as the current priority.
 
@@ -302,7 +308,7 @@
 - **Verification:** README’s Marketing & Auth Planning section now includes the page-by-page blueprint table, dependencies, automation chain language, and auth safeguards; each marketing preview script reports its focus/laws and ran successfully, the `marketing/status.md` table documents every page’s automation hooks, law references, and “automation complete” status using the new scripts, and `TREE.md` lists all preview scripts per the workspace hygiene automation while `TODO.md` keeps only one active entry. The Recommended Next TODOs list now starts at TODO-024, and the roadmap discipline paragraph keeps TODO-022 as the documented marketing priority before moving into TODO-024.
 
 ## TODO-023
-- **Goal:** Capture the Cinedex roadmap in its own control document and surface the platform’s detailed operations in a dedicated reference file so the control workspace can hand hovers off with minimal oral context.
+- **Goal:** Capture the platform roadmap in its own control document and surface the platform’s detailed operations in a dedicated reference file so the control workspace can hand hovers off with minimal oral context.
 - **Files touched:** `README.md`, `ROADMAP.md`, `APP.details.md`, `git/workflow.md`, `git/branches.md`, `scripts/git-sync.sh`, `scripts/git-branch-log.sh`, `queue.md`, `TODO.md`, `TREE.md`.
 - **Verification:** `ROADMAP.md` enumerates every phase, guard rail, and dependency while linking the guard rails back to the roadmap discipline narrative; `APP.details.md` captures the platform definition, shared services, automation programs, and governance references needed for upcoming tasks; `git/workflow.md`, `scripts/git-sync.sh`, and `scripts/git-branch-log.sh` automate the new Git discipline while `git/branches.md`, `queue.md`, and `TREE.md` chronicle the updated workflow/queue/tree. README now references `ROADMAP.md`, `APP.details.md`, and `git/workflow.md` up front, and `TODO.md` lists only TODO-023 while the queue entry names TODO-024 as the next priority. The Recommended Next TODOs list now starts at TODO-024, and the roadmap discipline paragraph names TODO-024 as the current focus.
 
@@ -324,7 +330,7 @@
 ## TODO-028
 - **Goal:** Automate the Git flow and merge-report process so every add/commit/push runs through automation, merge reports document human-approved merges, and the Git worker always has a branch/merge inventory.
 - **Files touched:** `README.md`, `GOVERNANCE.md`, `authority/laws.md`, `git/workflow.md`, `git/branches.md`, `git/merge-reports/merge-report-master-20260204T030230Z.md`, `scripts/git-merge-report.sh`, `queue.md`, `TREE.md`, `TODO.md`, `scripts/git-branch-log.sh`, `scripts/update_tree.sh`.
-- **Verification:** README now describes the Git Automation & Merge Guardrails with the remote `https://github.com/Cinedex/cinedex.git`, governance enforces the merge-report law, `authority/laws.md` catalogs the Git Automation and Merge Reporting laws, `git/workflow.md` and `git/merge-reports/merge-report-master-20260204T030230Z.md` capture the automation script usage and merge report details, queue/tree/branch log updates mention TODO-028, and `scripts/git-branch-log.sh`/`scripts/update_tree.sh` documented the automation runs before closing the TODO.
+- **Verification:** README now describes the Git Automation & Merge Guardrails with the canonical template remote, governance enforces the merge-report law, `authority/laws.md` catalogs the Git Automation and Merge Reporting laws, `git/workflow.md` and `git/merge-reports/merge-report-master-20260204T030230Z.md` capture the automation script usage and merge report details, queue/tree/branch log updates mention TODO-028, and `scripts/git-branch-log.sh`/`scripts/update_tree.sh` documented the automation runs before closing the TODO.
 
 ## TODO-029
 - **Goal:** Flesh out the MicroMDM add-on and App Marketplace plan so device governance, policy sync, and marketplace publishing are documented, tied to multi-server readiness, and governed by automation/laws before implementation.
@@ -332,7 +338,7 @@
 - **Verification:** README added the MicroMDM & App Marketplace blueprint section, described the automation checks and worker responsibilities, and references the merge-report workflow; `APP.details.md` and `ROADMAP.md` capture the Device policy topology and catalog guard rails; `authority/laws.md` cites the MicroMDM & Marketplace Law plus queue/governance references; `queue.md` marks TODO-029 active while `TREE.md` lists the new docs and directories; `scripts/update_tree.sh` and `scripts/git-branch-log.sh` reran after these changes; the automation tracker references `scripts/git-merge-report.sh` so merge reporting stays tied to the MicroMDM/App Marketplace releases.
 
 ## TODO-031
-- **Goal:** Define the Multi-App Service Expansion blueprint so future apps/services enter Cinedex via a deterministic queue/TODO/automation workflow with governance, merge reporting, marketing/auth/observability guard rails, and multi-server readiness baked in from the start.
+- **Goal:** Define the Multi-App Service Expansion blueprint so future apps/services enter the platform via a deterministic queue/TODO/automation workflow with governance, merge reporting, marketing/auth/observability guard rails, and multi-server readiness baked in from the start.
 - **Files touched:** `README.md`, `ROADMAP.md`, `APP.details.md`, `authority/laws.md`, `queue.md`, `TODO.md`, `TREE.md`.
 - **Verification:** (1) README’s Multi-App Service Expansion blueprint now spells out the queue/TODO triggers, worker assignments, automation/merge-report flows, marketing/auth/observability guard rails, and multi-server deployment readiness required before any new service launches; (2) `APP.details.md` adds an expansion section describing the queue steward, automation references (Resend previews, Observability Playbook hooks), worker responsibilities, and merge-report expectations so handoffs stay deterministic; (3) `ROADMAP.md` includes the blueprint entry with queued triggers, automation dependencies, guard rails, and the execution checklist that the TODO enforces; (4) `authority/laws.md` adds the new Multi-App Expansion Law to tie the queue/codex work back to the governance catalog; (5) `queue.md` now only lists future TODOs and notes that TODO-032 is active, keeping the queue focused; and (6) `scripts/update_tree.sh` reran so `TREE.md` documents every tracked file after these updates.
 

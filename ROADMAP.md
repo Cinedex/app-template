@@ -1,4 +1,4 @@
-# Cinedex Roadmap Reference
+# Platform Roadmap Reference
 
 ## Deterministic TODO Intake
 - The Executable TODO Law requires every active TODO to present an explicit Execution Scope checklist, objective, allowed files, verification contract, Lifecycle, and Criticality before the steward activates it.
@@ -64,6 +64,12 @@ Times below are noted in MST (Arizona; UTC-7). The catalog runs in descending or
 
 ### Completed TODOs (descending)
 
+- **TEMPLATE-IDENTITY-SANITIZATION**
+  - Description: Strip product-specific identity from the template, rename the root folder, sanitize docs/scripts, and bump VERSION.md to 0.3.8.0 without altering automation or governance behavior.
+  - Status: <span style="color:gray">Completed</span>.
+  - Date: <span style="color:gray">2026-02-06 14:25 MST</span>.
+  - Notes: Renamed the repo folder to `app-platform-template`, sanitized marketing previews/logs/scripts/documentation text, updated `VERSION.md` to 0.3.8.0 with TEMPLATE-IDENTITY-SANITIZATION as the bump reason, reran the update_tree/roadmap-sync/version-sync/process-integrity scripts, and now a case-insensitive search for the former brand returns zero hits.
+
 - **TODO-TEMPLATE-001**
   - Description: Platform Template Extraction & Normalization.
   - Status: <span style="color:gray">Completed</span>.
@@ -75,7 +81,7 @@ Times below are noted in MST (Arizona; UTC-7). The catalog runs in descending or
   - Description: App Marketplace + Atlas readiness guard rails.
   - Status: <span style="color:gray">Completed</span>.
   - Date: <span style="color:gray">2026-02-06 10:51 MST</span>.
-  - Notes: README/Cinedex.details now document the integration criteria, the App Marketplace & Atlas Readiness Law guards the story, queue notes capture the automation references, and merge report `git/merge-reports/merge-report-master-20260206T174957Z.md` lists the deterministic version artifact (0.3.5 → 0.3.5.0) so the roadmap and Feature Registry describe the readiness story before future implementation waves.
+  - Notes: README/APP.details now document the integration criteria, the App Marketplace & Atlas Readiness Law guards the story, queue notes capture the automation references, and merge report `git/merge-reports/merge-report-master-20260206T174957Z.md` lists the deterministic version artifact (0.3.5 → 0.3.5.0) so the roadmap and Feature Registry describe the readiness story before future implementation waves.
 
 - **TODO-058**
   - Description: LLM safeguards review, prompts & policies.
@@ -86,7 +92,7 @@ Times below are noted in MST (Arizona; UTC-7). The catalog runs in descending or
   - Description: Multi-server deployment readiness checklist.
   - Status: <span style="color:gray">Completed</span>.
   - Date: <span style="color:gray">2026-02-06 09:10 MST</span>.
-  - Notes: Documented infrastructure topology, worker cluster stewardship, automation hooks, and compatibility updates across README/GOVERNANCE/Cinedex.details/CODEX.worker; bumped `VERSION.md` to 0.3.3 and reran `scripts/verify-roadmap-sync.sh`, `scripts/verify-version-sync.sh`, `scripts/process-integrity-sweep.sh`, `scripts/update_tree.sh`, `scripts/git-branch-log.sh`, and `scripts/git-merge-report.sh master master` so the standard update flow proves multi-server readiness while the queue stayed future-only.
+  - Notes: Documented infrastructure topology, worker cluster stewardship, automation hooks, and compatibility updates across README/GOVERNANCE/APP.details/CODEX.worker; bumped `VERSION.md` to 0.3.3 and reran `scripts/verify-roadmap-sync.sh`, `scripts/verify-version-sync.sh`, `scripts/process-integrity-sweep.sh`, `scripts/update_tree.sh`, `scripts/git-branch-log.sh`, and `scripts/git-merge-report.sh master master` so the standard update flow proves multi-server readiness while the queue stayed future-only.
 - **TODO-069** (Deterministic Versioning & Compatibility Enforcement)
   - Description: Enforce deterministic MAJOR.MINOR.MICRO.PATCH bumps, manager automation obligations, and the compatibility contract so every change stays traceable.
   - Status: <span style="color:gray">Completed</span>.

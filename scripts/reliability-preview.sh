@@ -3,7 +3,7 @@ set -euo pipefail
 
 page="Reliability"
 cat <<END
---- Cinedex Marketing Preview ---
+--- Template Marketing Preview ---
 Page: $page
 Focus: Observability, automation, multi-server/multi-database resilience callout
 Laws cited: Reliability & Resilience Plan, Observability Playbook, UI Integrity Law, Truth Governance

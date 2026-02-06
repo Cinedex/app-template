@@ -12,4 +12,4 @@ _Generated: 2026-02-04T03:02:01Z UTC_
 
 ## Merge Notes
 * Automation script: 
-* Remote: https://github.com/Cinedex/cinedex.git
+* Remote: canonical template remote

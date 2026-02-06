@@ -1,6 +1,6 @@
 # Git Workflow & Version Control Discipline
 
-This document codifies how the Cinedex control workspace manages Git operations. Every manager and worker must consult `ROADMAP.md`, `queue.md`, `TREE.md`, and the active TODO before touching the repository; after running a Git action, update these artifacts (plus `git/branches.md`) so the workspace reflects the latest plan, tasks, and structure.
+This document codifies how the control workspace manages Git operations. Every manager and worker must consult `ROADMAP.md`, `queue.md`, `TREE.md`, and the active TODO before touching the repository; after running a Git action, update these artifacts (plus `git/branches.md`) so the workspace reflects the latest plan, tasks, and structure.
 
 ## Automation scripts
 - **`scripts/git-sync.sh`** stages all tracked changes (`git add -A`), optionally creates/checks out a branch (`-b branch-name`), commits with the provided message, and pushes to the remote (setting upstream if needed). The script calls `scripts/git-branch-log.sh` afterward so the branch history stays current.
@@ -16,7 +16,7 @@ This document codifies how the Cinedex control workspace manages Git operations.
 
 ## Safeguards
 - The Git Workflow Law (see `GOVERNANCE.md`) requires that each commit, push, or branch creation is backed by automations or scripts that can replay the action. Do not manually push or delete branches outside of `scripts/git-sync.sh` unless a TODO explicitly authorizes it, and always rerun `scripts/git-branch-log.sh` plus `scripts/update_tree.sh` afterward so governance can trace the exact state used in the handoff.
-- **Merge reporting:** Before any human-approved merge, run `scripts/git-merge-report.sh <target> <branch> [more branches]`; this writes a markdown summary in `git/merge-reports/` with commit heads, ahead/behind counts, and remote references (https://github.com/Cinedex/cinedex.git). The Git & Branch Tracking worker reviews the report, records it inside the TODO’s verification block, and only then allows automation (a merge script or manual command) to run. The same worker keeps `git/merge-reports/` updated so no merge is merged without a documented report.
+- **Merge reporting:** Before any human-approved merge, run `scripts/git-merge-report.sh <target> <branch> [more branches]`; this writes a markdown summary in `git/merge-reports/` with commit heads, ahead/behind counts, and remote references (the canonical template remote). The Git & Branch Tracking worker reviews the report, records it inside the TODO’s verification block, and only then allows automation (a merge script or manual command) to run. The same worker keeps `git/merge-reports/` updated so no merge is merged without a documented report.
 - **Merge audit routine (TODO-040):** The merge audit checklist reruns `scripts/git-branch-log.sh`, `scripts/git-merge-report.sh`, and `scripts/update_tree.sh` once a TODO is labeled merge-ready, records the automation outputs inside TODO-040, and supplies the Sequencer & Batch Oversight worker with the batch verification summary that cites the Git Automation, Merge Reporting, and Batch Verification laws before closing the triple TODO cycle.
 
 ## Git Automation Reporting Blueprint

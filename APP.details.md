@@ -1,6 +1,6 @@
-# Cinedex Platform Details
+# Platform Details
 
-Cinedex is a workspace-aware, multi-app operating system for filmmaking and creative production. It grew out of the Nubook proof-of-concept (deprecated name) and now orchestrates pitching, production, hiring, studio operations, finances, automation, and marketing across shared services so every first-party app stays focused while common concerns stay centralized.
+This template documents a workspace-aware, multi-app operating system for filmmaking and creative production. It orchestrates pitching, production, hiring, studio operations, finances, automation, and marketing across shared services so every first-party app stays focused while common concerns stay centralized.
 
 ## Multi-app landscape
 - **Cinehub:** Community/discovery hub for filmmakers, profiles, showreels, and opportunity surfacing.
@@ -33,7 +33,7 @@ Every app references shared identity, asset storage, finance, and orchestration 
 - **Multi-server readiness:** Every blueprint lists the target servers, clusters, and database partitions plus the shared identity/auth/ledger hosts it depends on, so workspace context travels predictably across clusters. Document which automation scripts provision the topology, how data partitions sync across shards, and which worker owns the deployment lifecycle so migrations stay consistent.
 
 ## Multi-server & multi-database readiness
-Cinedex is designed to scale horizontally: each app can deploy to dedicated servers or clusters, shared services operate across databases, and migrations follow the multi-server deployment blueprint (Phase 1–3). Service topology, database segregation, orchestration hooks, and migration checklists are described in `ROADMAP.md` so every new environment reproduces the same automation verification (TODO-009) and reliability guard rails (TODO-007).
+The platform is designed to scale horizontally: each app can deploy to dedicated servers or clusters, shared services operate across databases, and migrations follow the multi-server deployment blueprint (Phase 1–3). Service topology, database segregation, orchestration hooks, and migration checklists are described in `ROADMAP.md` so every new environment reproduces the same automation verification (TODO-009) and reliability guard rails (TODO-007).
 
 - **Multi-tenant architecture:** Clients and internal workspaces share the same multi-tenancy fabric; governance mandates per-tenant isolation via metadata-scoped requests, shared identity tokens, and database partitions so marketing/public surfaces stay separated from app-specific data streams. Document which clusters own tenancy metadata, how cross-tenant services communicate, and where deterministic version/compatibility metadata applies (platform release = `VERSION.md`, app/marketing surfaces read MAJOR/MINOR compliance per the Compatibility Contract).
 - **Version & compatibility mapping:** Multi-server readiness means every cluster references the canonical MAJOR.MINOR.MICRO.PATCH string, obeys the Platform Compatibility Enforcement Law (apps declare min/max platform versions), and logs warnings if drift appears (marketing/observability surfaces may warn, but blocking conditions occur only when canonical queue/roadmap laws fail). Include compatibility notes in infrastructure sections so operators know which app clusters may warn or block when platform versions advance.

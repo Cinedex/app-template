@@ -13,15 +13,15 @@ _Generated: 2026-02-06T17:36:36Z UTC_
 * Ahead/Behind (master...master): 0	0
 
 ## Merge Notes
-* Automation script: /Users/levielizaga/Sites/cinedex/scripts/git-merge-report.sh
-* Remote: https://github.com/Cinedex/cinedex.git
+* Automation script: /Users/levielizaga/Sites/app-platform-template/scripts/git-merge-report.sh
+* Remote: canonical template remote
 
 ## Version Artifact
 * Current version: 0.3.4
 * Previous version: 0.3.3
 * Bumped by: TODO-058 (LLM safeguards review, prompts & policies)
 * Created at: 2026-02-06T17:32:09Z UTC
-* Version artifact: /Users/levielizaga/Sites/cinedex/VERSION.md
+* Version artifact: /Users/levielizaga/Sites/app-platform-template/VERSION.md
 
 ## Governing Laws
 * Merge Reporting Law — documents the artifact so auditors can trace the merge.

@@ -3,7 +3,7 @@ set -euo pipefail
 
 page="Pricing / Contact"
 cat <<END
---- Cinedex Marketing Preview ---
+--- Template Marketing Preview ---
 Page: $page
 Focus: Workspace onboarding form, pricing clarity, secure contact workflow, CTA to schedule demos
 Laws cited: Auth Governance plan, Email Integrity Law, UI Integrity Law, Truth Governance

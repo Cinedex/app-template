@@ -11,5 +11,5 @@ _Generated: 2026-02-05T15:45:49Z UTC_
 * Branch not found locally.
 
 ## Merge Notes
-* Automation script: /Users/levielizaga/Sites/cinedex/scripts/git-merge-report.sh
-* Remote: https://github.com/Cinedex/cinedex.git
+* Automation script: /Users/levielizaga/Sites/app-platform-template/scripts/git-merge-report.sh
+* Remote: canonical template remote

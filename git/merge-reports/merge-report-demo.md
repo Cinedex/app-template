@@ -12,5 +12,5 @@ Generated: 2026-02-04T00:00:00Z UTC
 - Ahead/Behind (master...feature/git-automation): 3	0
 
 ## Merge Notes
-- Automation script: `/Users/levielizaga/Sites/cinedex/scripts/git-merge-report.sh`
-- Remote: https://github.com/Cinedex/cinedex.git
+- Automation script: `/Users/levielizaga/Sites/app-platform-template/scripts/git-merge-report.sh`
+- Remote: canonical template remote

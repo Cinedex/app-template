@@ -1,6 +1,6 @@
-# Cinedex Versioning Discipline
+# Platform Versioning Discipline
 
-Cinedex uses deterministic versioning for the control workspace plus every first-party app so we can signal release readiness, track automation, and tie each change to a TODO. This file documents the patterns the Git & Branch Tracking worker follows before merging anything.
+The platform uses deterministic versioning for the control workspace plus every first-party app so we can signal release readiness, track automation, and tie each change to a TODO. This file documents the patterns the Git & Branch Tracking worker follows before merging anything.
 
 ## Versioning model
 - **Base platform version:** Track via `major.minor.micro` (e.g., `1.4.2`). Increase the **micro** number for every published change, even small documentation updates, so no modification escapes an audit trail. Reserve minor bumps for roadmap milestones (new phases or app ships) and major bumps for architectural shifts (multi-server splits, MicroMDM go-live).

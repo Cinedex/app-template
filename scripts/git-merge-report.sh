@@ -83,7 +83,7 @@ created_at="$(extract_value "Created At")"
 
   printf "\n## Merge Notes\n"
   printf "* Automation script: %s/scripts/git-merge-report.sh\n" "$root"
-  printf "* Remote: https://github.com/Cinedex/cinedex.git\n"
+  printf "* Remote: canonical template remote\n"
   printf "\n## Version Artifact\n"
   if [ -n "$current_version" ]; then
     printf "* Current version: %s\n" "$current_version"

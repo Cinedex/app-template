@@ -3,7 +3,7 @@ set -euo pipefail
 
 page="Apps"
 cat <<END
---- Cinedex Marketing Preview ---
+--- Template Marketing Preview ---
 Page: $page
 Focus: first-party apps grid (Cinehub, Gigs, Spark, Films, Studio, Loadout, Pulse, Ledger, Sync, Atlas) plus shared identity/asset systems callout
 Laws cited: UI Integrity Law, Truth Governance
