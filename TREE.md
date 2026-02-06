@@ -1,0 +1,105 @@
+# Workspace Tree
+
+This tree summarizes the current control documents and must be updated whenever a new file is introduced.
+
+## Directories
+- `authority/`
+- `features/`
+- `git/`
+- `git/approvals/`
+- `git/approvals/approved/`
+- `git/merge-reports/`
+- `marketing/`
+- `observability/`
+- `pulse/`
+- `scripts/`
+- `scripts/logs/`
+
+## Files
+- `APP.ROADMAP.md`
+- `CODEX.manager.md`
+- `CODEX.worker.md`
+- `Cinedex.details.md`
+- `GOVERNANCE.md`
+- `README.md`
+- `ROADMAP.md`
+- `TODO.complete.md`
+- `TODO.md`
+- `TREE.md`
+- `VERSION.md`
+- `authority/laws.md`
+- `features/FEATURE.REGISTRY.md`
+- `git/.DS_Store`
+- `git/approvals/README.md`
+- `git/branches.md`
+- `git/merge-reports/merge-report-demo.md`
+- `git/merge-reports/merge-report-main-20260205T023255Z.md`
+- `git/merge-reports/merge-report-main-20260205T030926Z.md`
+- `git/merge-reports/merge-report-main-20260205T033220Z.md`
+- `git/merge-reports/merge-report-main-20260205T053837Z.md`
+- `git/merge-reports/merge-report-main-20260205T054212Z.md`
+- `git/merge-reports/merge-report-main-20260205T054458Z.md`
+- `git/merge-reports/merge-report-main-20260205T153804Z.md`
+- `git/merge-reports/merge-report-main-20260205T154310Z.md`
+- `git/merge-reports/merge-report-main-20260205T154549Z.md`
+- `git/merge-reports/merge-report-main-20260205T155036Z.md`
+- `git/merge-reports/merge-report-main-20260205T155456Z.md`
+- `git/merge-reports/merge-report-main-20260205T155905Z.md`
+- `git/merge-reports/merge-report-main-20260205T160428Z.md`
+- `git/merge-reports/merge-report-main-20260205T195122Z.md`
+- `git/merge-reports/merge-report-master-20260204T030201Z.md`
+- `git/merge-reports/merge-report-master-20260204T030230Z.md`
+- `git/merge-reports/merge-report-master-20260205T200912Z.md`
+- `git/merge-reports/merge-report-master-20260205T200954Z.md`
+- `git/merge-reports/merge-report-master-20260205T203228Z.md`
+- `git/merge-reports/merge-report-master-20260205T204713Z.md`
+- `git/merge-reports/merge-report-master-20260205T231207Z.md`
+- `git/merge-reports/merge-report-master-20260205T231404Z.md`
+- `git/merge-reports/merge-report-master-20260205T233047Z.md`
+- `git/merge-reports/merge-report-master-20260205T234756Z.md`
+- `git/merge-reports/merge-report-master-20260206T003406Z.md`
+- `git/merge-reports/merge-report-master-20260206T013125Z.md`
+- `git/merge-reports/merge-report-master-20260206T015621Z.md`
+- `git/merge-reports/merge-report-master-20260206T023020Z.md`
+- `git/merge-reports/merge-report-master-20260206T023402Z.md`
+- `git/merge-reports/merge-report-master-20260206T024733Z.md`
+- `git/merge-reports/merge-report-master-20260206T034706Z.md`
+- `git/merge-reports/merge-report-master-20260206T173636Z.md`
+- `git/merge-reports/merge-report-master-20260206T174957Z.md`
+- `git/merge-reports/merge-report-master-20260206T200624Z.md`
+- `git/merge-reports/merge-report-master-20260206T203026Z.md`
+- `git/versioning.md`
+- `git/workflow.md`
+- `marketing/status.md`
+- `observability/runtime-wiring.md`
+- `pulse/ingestion-verification.md`
+- `queue.md`
+- `scripts/apps-preview.sh`
+- `scripts/community-preview.sh`
+- `scripts/contact-preview.sh`
+- `scripts/git-branch-log.sh`
+- `scripts/git-merge-report.sh`
+- `scripts/git-merge-with-approval.sh`
+- `scripts/git-sync.sh`
+- `scripts/install-githooks.sh`
+- `scripts/integrations-preview.sh`
+- `scripts/logs/automation-inventory.md`
+- `scripts/logs/error-incidents.md`
+- `scripts/logs/marketing-outreach-run.md`
+- `scripts/logs/observability-runs.md`
+- `scripts/logs/process-integrity.md`
+- `scripts/logs/sequencer-batch-041.md`
+- `scripts/logs/sequencer-batch-042.md`
+- `scripts/logs/worker-coordinator.md`
+- `scripts/preview-home.sh`
+- `scripts/process-integrity-sweep.sh`
+- `scripts/reliability-preview.sh`
+- `scripts/roadmap-preview.sh`
+- `scripts/run-safe.sh`
+- `scripts/update_tree.sh`
+- `scripts/verify-roadmap-sync.sh`
+- `scripts/verify-version-sync.sh`
+
+## Update rule
+- Run this script whenever a new file or folder is introduced so the workspace tree stays accurate before a commit.
+- The automation also asserts that `TODO.md` contains one active TODO, keeping the workflow deterministic.

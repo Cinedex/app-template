@@ -1,0 +1,31 @@
+# Git Workflow & Version Control Discipline
+
+This document codifies how the Cinedex control workspace manages Git operations. Every manager and worker must consult `ROADMAP.md`, `queue.md`, `TREE.md`, and the active TODO before touching the repository; after running a Git action, update these artifacts (plus `git/branches.md`) so the workspace reflects the latest plan, tasks, and structure.
+
+## Automation scripts
+- **`scripts/git-sync.sh`** stages all tracked changes (`git add -A`), optionally creates/checks out a branch (`-b branch-name`), commits with the provided message, and pushes to the remote (setting upstream if needed). The script calls `scripts/git-branch-log.sh` afterward so the branch history stays current.
+- **`scripts/git-branch-log.sh`** writes the latest branch summary (`git branch -av`, current changes, last commit IDs) into `git/branches.md`. Run it before or after every Git operation so the log captures the workspace state that feeds the Authority & Compliance worker’s audits.
+
+## Branch management
+- Create branches when a TODO spans multiple files or when the change impacts blueprint, governance, or automation artifacts; always name the branch `codex/<TODO-number>-<short-description>`.
+- Keep merges on hold until an explicit TODO (or worker assignment) calls for a merge review; focus on keeping feature branches clean, rebasing only when the automation script requests it, and capturing the branch log before retiring a branch.
+
+## Tracking & reporting
+- `git/branches.md` is the Git worker’s dashboard—record every branch name, purpose, latest commit, and verification status. Automation scripts update this file automatically, but workers should also append notes after manual interventions (e.g., “TODO-024 – auth plan + git audit”).
+- Document the commit summary, touched files, verification commands, and executed automations inside the active TODO before closing it, and refer back to the branch log to prove the change was tracked.
+
+## Safeguards
+- The Git Workflow Law (see `GOVERNANCE.md`) requires that each commit, push, or branch creation is backed by automations or scripts that can replay the action. Do not manually push or delete branches outside of `scripts/git-sync.sh` unless a TODO explicitly authorizes it, and always rerun `scripts/git-branch-log.sh` plus `scripts/update_tree.sh` afterward so governance can trace the exact state used in the handoff.
+- **Merge reporting:** Before any human-approved merge, run `scripts/git-merge-report.sh <target> <branch> [more branches]`; this writes a markdown summary in `git/merge-reports/` with commit heads, ahead/behind counts, and remote references (https://github.com/Cinedex/cinedex.git). The Git & Branch Tracking worker reviews the report, records it inside the TODO’s verification block, and only then allows automation (a merge script or manual command) to run. The same worker keeps `git/merge-reports/` updated so no merge is merged without a documented report.
+- **Merge audit routine (TODO-040):** The merge audit checklist reruns `scripts/git-branch-log.sh`, `scripts/git-merge-report.sh`, and `scripts/update_tree.sh` once a TODO is labeled merge-ready, records the automation outputs inside TODO-040, and supplies the Sequencer & Batch Oversight worker with the batch verification summary that cites the Git Automation, Merge Reporting, and Batch Verification laws before closing the triple TODO cycle.
+
+## Git Automation Reporting Blueprint
+- **Branch log:** `scripts/git-branch-log.sh` rewrites `git/branches.md` with the active TODO, the current `git status -sb`, branch inventory, and recent commits; the Branch Tracking worker runs it before/after every git operation so governance can confirm the workspace state that the automation reflects. The log is referenced inside TODO verification blocks so the Execution Scope claim “Git logs match the documented workflow” can be proven via the latest branch log entry.
+- **Merge report:** `scripts/git-merge-report.sh master <source-branch>` runs before any human-approved merge and after merges to capture the remote, version artifact, and merge candidates; it now appends a “Governing Laws” section referencing the Merge Reporting Law and Merge Audit Law so each report cites the statutory obligations the merge fulfills. The merge report file is pointed to in the TODO verification block and archived next to the automation log so auditors can confirm the law references exist.
+- **How it runs:** the Branch Tracking worker runs the branch log as part of every commit/push flow, while the merge report runs whenever a merge is under review (via `scripts/git-merge-with-approval.sh` or manual pre-merge checks). Each automation run is recorded in the TODO verification (branch log path + merge report filename) and the System Health Report so law-aligned automation evidence stays traceable.
+- **Canonical trace:** the TODO verification checklist (see TODO-056) references these scripts, the README/GOV blueprint, and the merge report so Git logs always match the documented workflow and the merge report cites the law references required by the Merge Reporting Law and Merge Audit Law.
+
+## Canonical merges & approval artifacts
+- The automation canonical target branch is `master`. `scripts/git-merge-report.sh` refuses to generate a report for other targets unless `--allow-target` is passed, so the workflow never guesses the destination.
+- `scripts/git-merge-with-approval.sh` coordinates the approval gate: it runs `scripts/git-merge-report.sh master <source>`, prints a single approval request detailing the target, source, merge report path, and the required artifact path in `git/approvals/approved/`, and insists the artifact documents the target and source SHAs before continuing. Approval artifacts follow the `<timestamp>-<target>-<source>.approved` naming described in `git/approvals/README.md`.
+- After the artifact matches the head SHAs, the executor merges `--no-ff`, pushes `master`, reruns the merge report for the post-merge state, and refreshes `scripts/git-branch-log.sh` plus `scripts/update_tree.sh`, satisfying the Roadmap Sync Gate before the final verification block references the new merge report.
