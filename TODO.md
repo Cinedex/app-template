@@ -28,10 +28,10 @@ This list always shows exactly one active TODO. Completed TODOs move to `TODO.co
   - **Criticality:** Non-Critical
   - **Objective:** Document App Marketplace and Atlas readiness guard rails.
   - **Execution Scope:**
-    - [ ] Outline marketplace criteria in README and `Cinedex.details.md`.
+    - [ ] Outline marketplace criteria in README and `APP.details.md`.
     - [ ] Update queue/roadmap entries with integration readiness steps and automation references.
     - [ ] Cite relevant laws for each guard rail.
-  - **Allowed files:** `README.md`, `Cinedex.details.md`, `queue.md`, `TODO.md`, `TODO.complete.md`, `authority/laws.md`, `ROADMAP.md`, `scripts/update_tree.sh`, `VERSION.md`.
+  - **Allowed files:** `README.md`, `APP.details.md`, `queue.md`, `TODO.md`, `TODO.complete.md`, `authority/laws.md`, `ROADMAP.md`, `scripts/update_tree.sh`, `VERSION.md`.
   - **Verification Contract:** README/governance cite the guard rails, queue records follow-up TODOs, and automation scripts rerun cleanly.
   - **Post-Completion Expectations:** Update the Feature Registry with the marketplace readiness story.
 ## TODO Template (for future use)

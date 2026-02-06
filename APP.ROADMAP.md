@@ -1,6 +1,6 @@
 # Platform Template Roadmap (Human View)
 
-This document narrates the platform template journey for readers. Execution is governed solely by `ROADMAP.md`, `TODO.md`, and `queue.md`; `APP.ROADMAP.md` is descriptive only and never bypasses the canonical artifacts or automation gates. Derived apps rename the sample `Cinedex.details.md` to `<app>.details.md` before injecting their own intent, while this roadmap keeps showing the template evidence.
+This document narrates the platform template journey for readers. Execution is governed solely by `ROADMAP.md`, `TODO.md`, and `queue.md`; `APP.ROADMAP.md` is descriptive only and never bypasses the canonical artifacts or automation gates. Derived apps rename the sample `APP.details.md` to `<app>.details.md` before injecting their own intent, while this roadmap keeps showing the template evidence.
 
 ## Completed Template Phases
 These entries highlight the evidence that this workspace is template-ready.

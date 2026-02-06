@@ -407,3 +407,21 @@
 6. **Remediation:** Re-run scripts/git-merge-report.sh to capture the version artifact.
 7. **Affected files:** /Users/levielizaga/Sites/cinedex-platform-template/git/merge-reports/merge-report-master-20260206T200624Z.md
 8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh, scripts/verify-version-sync.sh
+
+1. **Date (UTC):** 2026-02-06T20:40:21Z
+2. **Version:** 0.3.7
+3. **Service/App:** Version Sync Gate
+4. **Description:** Merge report /Users/levielizaga/Sites/cinedex-platform-template/git/merge-reports/merge-report-master-20260206T203026Z.md lists a different current version.
+5. **TODO reference:** TODO-064
+6. **Remediation:** Regenerate the merge report after updating VERSION.md.
+7. **Affected files:** /Users/levielizaga/Sites/cinedex-platform-template/git/merge-reports/merge-report-master-20260206T203026Z.md, /Users/levielizaga/Sites/cinedex-platform-template/VERSION.md
+8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh, scripts/verify-version-sync.sh
+
+1. **Date (UTC):** 2026-02-06T20:40:31Z
+2. **Version:** 0.3.7
+3. **Service/App:** Version Sync Gate
+4. **Description:** Neither ROADMAP.md nor TODO.complete.md references TEMPLATE-FILENAME-NORMALIZATION.
+5. **TODO reference:** TODO-064
+6. **Remediation:** Document TEMPLATE-FILENAME-NORMALIZATION in the roadmap/completed log so the version bump is traceable.
+7. **Affected files:** /Users/levielizaga/Sites/cinedex-platform-template/ROADMAP.md, /Users/levielizaga/Sites/cinedex-platform-template/TODO.complete.md
+8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh, scripts/verify-version-sync.sh

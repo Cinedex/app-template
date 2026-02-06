@@ -17,9 +17,9 @@ This tree summarizes the current control documents and must be updated whenever 
 
 ## Files
 - `APP.ROADMAP.md`
+- `APP.details.md`
 - `CODEX.manager.md`
 - `CODEX.worker.md`
-- `Cinedex.details.md`
 - `GOVERNANCE.md`
 - `README.md`
 - `ROADMAP.md`
@@ -68,6 +68,7 @@ This tree summarizes the current control documents and must be updated whenever 
 - `git/merge-reports/merge-report-master-20260206T174957Z.md`
 - `git/merge-reports/merge-report-master-20260206T200624Z.md`
 - `git/merge-reports/merge-report-master-20260206T203026Z.md`
+- `git/merge-reports/merge-report-master-20260206T204027Z.md`
 - `git/versioning.md`
 - `git/workflow.md`
 - `marketing/status.md`

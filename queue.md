@@ -2,7 +2,7 @@
 
 This queue enforces the Executable TODO Law and the Governance-to-Implementation Continuity Law: each entry documents the required Execution Scope, lifecycle status, verification steps, and law references before activation. The queue shows future TODOs only so the steward confirms compliance before scheduling work; active/completed TODOs live in `TODO.md`/`TODO.complete.md` and the roadmap.
 
-- **TODO-050**: Platform detail backlog sprint from `Cinedex.details.md`.
+- **TODO-050**: Platform detail backlog sprint from `APP.details.md`.
   - Lifecycle: Defined
   - Status: Queued
   - Notes: Roadmap/TODO Governance stewards turn the detail backlog into executable TODOs when the roadmap needs a new phase.
