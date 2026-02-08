@@ -4,6 +4,12 @@
 - **Verification:** None (placeholder ensured the queue remained future-only until the next TODO activated).
 - **Notes:** TODO-000 signaled idle readiness; closing it lets TODO-072 (Git Automation Enforcement & Mandatory Patch Versioning) become the single active TODO.
 
+## TODO-072 (Git Automation Enforcement & Mandatory Patch Versioning)
+- **Goal:** Hard-code the Git automation enforcement, mandatory patch versioning, approval-gated merges, and audit automation so every change runs through scripted workflows, the `VERSION.md` patch digit reflects the latest TODO, and the Audit Service regenerates deterministic evidence before any major template evolution.
+- **Files touched:** `TODO.md`, `TODO.complete.md`, `ROADMAP.md`, `README.md`, `GOVERNANCE.md`, `CODEX.worker.md`, `authority/laws.md`, `VERSION.md`, `git/workflow.md`, `git/versioning.md`, `scripts/git-sync.sh`, `scripts/git-merge-with-approval.sh`, `scripts/git-branch-log.sh`, `scripts/process-integrity-sweep.sh`, `scripts/verify-version-sync.sh`, `scripts/run-audit.sh`, `scripts/logs/audit-runs.md`, `scripts/logs/process-integrity.md`, `observability/audit/AUDIT.REPORT.md`, `git/merge-reports/merge-report-master-20260208T215240Z.md`, `git/branches.md`, `scripts/logs/error-incidents.md`.
+- **Verification:** `scripts/verify-roadmap-sync.sh`, `scripts/verify-version-sync.sh`, `scripts/process-integrity-sweep.sh`, `scripts/update_tree.sh`, `scripts/git-branch-log.sh`, `scripts/run-audit.sh`, plus audit metadata/log updates and the new merge report cite `VERSION.md`.
+- **Notes:** Audit automation now records UTC timestamps, commit SHAs, and the patch-only `VERSION.md` string so external reviewers (including ChatGPT) read the audit report without oral context; TODO-072 ties the Audit Service track to the Git Automation Exclusivity, Approval-Gated Merge Automation, and Mandatory Patch Version laws before the automation batch closes.
+
 ## TODO-AUDIT-SERVICE-001 (Platform Audit Service)
 - **Goal:** Add the governed Audit Service so the template produces deterministic, shareable audit snapshots before every major evolution, and wire automation, governance, laws, workers, and logs into the new audit track.
 - **Files touched:** `README.md`, `GOVERNANCE.md`, `ROADMAP.md`, `CODEX.worker.md`, `authority/laws.md`, `observability/audit/AUDIT.README.md`, `observability/audit/AUDIT.SCOPE.md`, `observability/audit/AUDIT.REPORT.md`, `observability/audit/AUDIT.METADATA.json`, `scripts/run-audit.sh`, `scripts/logs/audit-runs.md`, `TODO.complete.md`.
