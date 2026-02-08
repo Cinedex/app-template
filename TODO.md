@@ -4,39 +4,43 @@ This list always shows exactly one active TODO. Completed TODOs move to `TODO.co
 
 ## Active TODO
 
-## TODO-072 (Git Automation Enforcement & Mandatory Patch Versioning)
+## TODO-073 (CI Gate — Process Integrity + Audit Enforcement)
 - **TODO Type:** Governance + Automation
-- **Lifecycle:** Implemented
+- **Lifecycle:** Verified
 - **Criticality:** Critical
 - **Status:** Active
-- **Objective:** Harden the Git automation pipeline so commits/merges remain fully scripted, every change bumps the patch metadata, audit tooling stays deterministic, and governance documents enumerate the automation/law coverage before any major template evolution.
+- **Objective:** Elevate the GitHub Actions CI gate into the official verification layer so every PR and push mirrors the local automation stack, uploads the deterministic audit artifacts, and blocks merges until the gate passes, while documentation, laws, and workers treat CI as mandatory before approval.
 - **Execution Scope:**
-  - [ ] Close TODO-000 and open TODO-072 with an updated roadmap/queue narrative so the canonical workspace reflects the new governance track.
-  - [ ] Update `scripts/git-sync.sh`, `scripts/git-merge-with-approval.sh`, `scripts/git-branch-log.sh`, and `scripts/process-integrity-sweep.sh` to enforce the new automation guard rails, approval gating, conflict/drift detection, and mandatory version bump before every commit.
-  - [ ] Document the Git automation enforcement, mandatory patch versioning, and Audit Service governance track inside `README.md`, `GOVERNANCE.md`, `CODEX.worker.md`, `authority/laws.md`, `git/workflow.md`, and `git/versioning.md`, linking to the required laws and workers.
-  - [ ] Reconcile `VERSION.md` with the new patch metadata schema (Current, Previous, Full version, Bumped By, Timestamp, Notes) and bump the patch digit for this change.
-  - [ ] Run the verification scripts (`scripts/verify-roadmap-sync.sh`, `scripts/verify-version-sync.sh`, `scripts/process-integrity-sweep.sh`, `scripts/update_tree.sh`, `scripts/git-branch-log.sh`, `scripts/run-audit.sh`) so the automation state, audit log, and tree snapshot capture the enforced discipline.
-  - [ ] Record the automation outcomes plus the Audit Service log/metadata updates so downstream apps inherit the deterministic audit snapshot, error logs, and branch inventory.
-- **Allowed files:** `README.md`, `GOVERNANCE.md`, `authority/laws.md`, `CODEX.worker.md`, `ROADMAP.md`, `TODO.md`, `TODO.complete.md`, `VERSION.md`, `TREE.md`, `queue.md`, `git/workflow.md`, `git/versioning.md`, `scripts/git-sync.sh`, `scripts/git-merge-with-approval.sh`, `scripts/git-branch-log.sh`, `scripts/process-integrity-sweep.sh`, `scripts/run-audit.sh`, `scripts/logs/audit-runs.md`, `scripts/logs/error-incidents.md`, `observability/audit/AUDIT.REPORT.md`, `observability/audit/AUDIT.METADATA.json`.
-- **Verification Contract:** `scripts/verify-roadmap-sync.sh`, `scripts/verify-version-sync.sh`, `scripts/process-integrity-sweep.sh`, `scripts/update_tree.sh`, `scripts/git-branch-log.sh`, `scripts/run-audit.sh` (all must pass; audit run refreshes the report/metadata/log); the final `TODO.complete.md` entry cites the merge report plus the branch log/automation outputs so the audit can be reviewed without additional context.
-- **Notes:** This TODO unlocks the Audit Service track, enforces automated merges with documented human approvals, and ensures version bumps happen even for tiny changes so derived apps inherit deterministically governed Git behavior.
+  - [ ] Confirm `.github/workflows/ci-integrity.yml` runs `scripts/verify-roadmap-sync.sh`, `scripts/verify-version-sync.sh`, `scripts/process-integrity-sweep.sh`, and `scripts/run-audit.sh` in order, fails on any non-zero exit, and uploads the audit report, metadata, audit/process logs, error incidents, `git/branches.md`, and `TREE.md` without mutating the tree.
+  - [ ] Confirm `.github/workflows/ci-merge-readiness.yml` triggers on pull requests to `master`, executes `bash scripts/git-merge-report.sh master HEAD`, uploads `git/merge-reports/*.md`, and never attempts to merge or mutate files.
+  - [ ] Update `README.md`, `GOVERNANCE.md`, `git/workflow.md`, and `CODEX.worker.md` so they document the CI gate, reference the new CI Verification Gate Law, explain CI’s independence, and highlight the workflow artifact requirements.
+  - [ ] Add the CI Verification Gate Law to `authority/laws.md` (citing the Git Automation Exclusivity, Approval-Gated Merge Automation, Mandatory Patch Version, and Process Integrity laws) and ensure the worker roster calls out the CI Gatekeeper role that treats CI drift as a stop condition.
+  - [ ] Record the CI gate in the roadmap, queue, and TODO verifications so the governance story, law references, and worker assignments explicitly mention CI as mandatory before closing.
+  - [ ] Bump `VERSION.md` (patch) so `Full Version` becomes `0.3.8.5`, `Previous Version` stays `0.3.8.4`, `Bumped By` references TODO-073, and the notes state “CI integrity + audit gate added (GitHub Actions).”
+  - [ ] Run the verification suite (`scripts/verify-roadmap-sync.sh`, `scripts/verify-version-sync.sh`, `scripts/process-integrity-sweep.sh`, `scripts/run-audit.sh`, `scripts/update_tree.sh`, `scripts/git-branch-log.sh`) from a clean checkout, record the results in `TODO.complete.md`, and ensure `TREE.md` reflects `.github/workflows/.`
+  - [ ] Capture the completion evidence (logs, audit artifacts, branch log, version bump) inside `TODO.complete.md` and `ROADMAP.md` so downstream reviewers see the deterministic story before the template moves on.
+- **Allowed files:** `.github/workflows/**`, `authority/laws.md`, `GOVERNANCE.md`, `README.md`, `git/workflow.md`, `CODEX.worker.md`, `TODO.md`, `TODO.complete.md`, `ROADMAP.md`, `queue.md`, `VERSION.md`, `TREE.md`.
+- **Verification Contract:** `bash scripts/verify-roadmap-sync.sh`; `bash scripts/verify-version-sync.sh`; `bash scripts/process-integrity-sweep.sh`; `bash scripts/run-audit.sh`; `bash scripts/update_tree.sh`; `bash scripts/git-branch-log.sh` (all must pass; record pass status inside `TODO.complete.md` and ensure the audit artifacts mention the new version string).
+- **Notes:** This TODO closes the CI gate: approval artifacts are only trusted after the CI workflows pass, the audit snapshot remains shareable, and any CI/local drift enforces the CI Verification Gate Law that stretches across automation, laws, and worker oversight.
+
 
 ## Future Implementation TODOs
+## Future Implementation TODOs## Future Implementation TODOs
 - None currently queued.
 
 ## Future Governance TODOs
 - **TODO-059:** App Marketplace + Atlas readiness.
-  - **TODO Type:** Governance-Only
-  - **Lifecycle:** Defined
-  - **Criticality:** Non-Critical
-  - **Objective:** Document App Marketplace and Atlas readiness guard rails.
-  - **Execution Scope:**
-    - [ ] Outline marketplace criteria in README and `APP.details.md`.
-    - [ ] Update queue/roadmap entries with integration readiness steps and automation references.
-    - [ ] Cite relevant laws for each guard rail.
-  - **Allowed files:** `README.md`, `APP.details.md`, `queue.md`, `TODO.md`, `TODO.complete.md`, `authority/laws.md`, `ROADMAP.md`, `scripts/update_tree.sh`, `VERSION.md`.
-  - **Verification Contract:** README/governance cite the guard rails, queue records follow-up TODOs, and automation scripts rerun cleanly.
-  - **Post-Completion Expectations:** Update the Feature Registry with the marketplace readiness story.
+-  - **TODO Type:** Governance-Only
+-  - **Lifecycle:** Defined
+-  - **Criticality:** Non-Critical
+-  - **Objective:** Document App Marketplace and Atlas readiness guard rails.
+-  - **Execution Scope:**
+-    - [ ] Outline marketplace criteria in README and `APP.details.md`.
+-    - [ ] Update queue/roadmap entries with integration readiness steps and automation references.
+-    - [ ] Cite relevant laws for each guard rail.
+-  - **Allowed files:** `README.md`, `APP.details.md`, `queue.md`, `TODO.md`, `TODO.complete.md`, `authority/laws.md`, `ROADMAP.md`, `scripts/update_tree.sh`, `VERSION.md`.
+-  - **Verification Contract:** README/governance cite the guard rails, queue records follow-up TODOs, and automation scripts rerun cleanly.
+-  - **Post-Completion Expectations:** Update the Feature Registry with the marketplace readiness story.
 ## TODO Template (for future use)
 - **Goal:** _Describe the desired outcome._
 - **Allowed files:** _List files the TODO may touch._

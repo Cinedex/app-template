@@ -470,3 +470,39 @@
 6. **Remediation:** Include the bumped TODO reference when rerunning scripts/git-merge-report.sh.
 7. **Affected files:** /Users/levielizaga/Sites/app-platform-template/git/merge-reports/merge-report-master-20260206T204027Z.md
 8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh, scripts/verify-version-sync.sh
+
+1. **Date (UTC):** 2026-02-08T22:35:58Z
+2. **Version:** 0.3.8
+3. **Service/App:** Version Sync Gate
+4. **Description:** Merge report /Users/levielizaga/Sites/app-platform-template/git/merge-reports/merge-report-master-20260208T215240Z.md omits the Bumped By TODO.
+5. **TODO reference:** TODO-073
+6. **Remediation:** Include the bumped TODO reference when rerunning scripts/git-merge-report.sh.
+7. **Affected files:** /Users/levielizaga/Sites/app-platform-template/git/merge-reports/merge-report-master-20260208T215240Z.md
+8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh, scripts/verify-version-sync.sh
+
+1. **Date (UTC):** 2026-02-08T22:36:09Z
+2. **Version:** 0.3.8
+3. **Service/App:** Version Sync Gate
+4. **Description:** Neither ROADMAP.md nor TODO.complete.md references TODO-073 (CI Gate — Process Integrity + Audit Enforcement).
+5. **TODO reference:** TODO-073
+6. **Remediation:** Document TODO-073 (CI Gate — Process Integrity + Audit Enforcement) in the roadmap/completed log so the version bump is traceable.
+7. **Affected files:** /Users/levielizaga/Sites/app-platform-template/ROADMAP.md, /Users/levielizaga/Sites/app-platform-template/TODO.complete.md
+8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh, scripts/verify-version-sync.sh
+
+1. **Date (UTC):** 2026-02-08T22:42:36Z
+2. **Version:** 0.3.8
+3. **Service/App:** Roadmap Sync Gate
+4. **Description:** Active TODO section must contain exactly one TODO header (found 2).
+5. **TODO reference:** TODO-073
+6. **Remediation:** Remove extra headers so TODO.md keeps a single active TODO.
+7. **Affected files:** /Users/levielizaga/Sites/app-platform-template/TODO.md
+8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh
+
+1. **Date (UTC):** 2026-02-08T22:42:55Z
+2. **Version:** 0.3.8
+3. **Service/App:** Roadmap Sync Gate
+4. **Description:** /Users/levielizaga/Sites/app-platform-template/ROADMAP.md Active section does not list TODO-073.
+5. **TODO reference:** TODO-073
+6. **Remediation:** Update ROADMAP.md so the Active TODO section references TODO-073.
+7. **Affected files:** /Users/levielizaga/Sites/app-platform-template/ROADMAP.md
+8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh
