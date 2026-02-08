@@ -4,39 +4,37 @@ This list always shows exactly one active TODO. Completed TODOs move to `TODO.co
 
 ## Active TODO
 
-## TODO-072 (Git Automation Enforcement & Mandatory Patch Versioning)
+## TODO-000 (Idle placeholder)
 - **TODO Type:** Governance + Automation
-- **Lifecycle:** Implemented
+- **Lifecycle:** Idle
 - **Criticality:** Critical
 - **Status:** Active
-- **Objective:** Harden the Git automation pipeline so commits/merges remain fully scripted, every change bumps the patch metadata, audit tooling stays deterministic, and governance documents enumerate the automation/law coverage before any major template evolution.
+- **Objective:** Signal that the workspace currently has no active TODO and await the governance steward’s next assignment while the queue stays future-only.
 - **Execution Scope:**
-  - [ ] Close TODO-000 and open TODO-072 with an updated roadmap/queue narrative so the canonical workspace reflects the new governance track.
-  - [ ] Update `scripts/git-sync.sh`, `scripts/git-merge-with-approval.sh`, `scripts/git-branch-log.sh`, and `scripts/process-integrity-sweep.sh` to enforce the new automation guard rails, approval gating, conflict/drift detection, and mandatory version bump before every commit.
-  - [ ] Document the Git automation enforcement, mandatory patch versioning, and Audit Service governance track inside `README.md`, `GOVERNANCE.md`, `CODEX.worker.md`, `authority/laws.md`, `git/workflow.md`, and `git/versioning.md`, linking to the required laws and workers.
-  - [ ] Reconcile `VERSION.md` with the new patch metadata schema (Current, Previous, Full version, Bumped By, Timestamp, Notes) and bump the patch digit for this change.
-  - [ ] Run the verification scripts (`scripts/verify-roadmap-sync.sh`, `scripts/verify-version-sync.sh`, `scripts/process-integrity-sweep.sh`, `scripts/update_tree.sh`, `scripts/git-branch-log.sh`, `scripts/run-audit.sh`) so the automation state, audit log, and tree snapshot capture the enforced discipline.
-  - [ ] Record the automation outcomes plus the Audit Service log/metadata updates so downstream apps inherit the deterministic audit snapshot, error logs, and branch inventory.
-- **Allowed files:** `README.md`, `GOVERNANCE.md`, `authority/laws.md`, `CODEX.worker.md`, `ROADMAP.md`, `TODO.md`, `TODO.complete.md`, `VERSION.md`, `TREE.md`, `queue.md`, `git/workflow.md`, `git/versioning.md`, `scripts/git-sync.sh`, `scripts/git-merge-with-approval.sh`, `scripts/git-branch-log.sh`, `scripts/process-integrity-sweep.sh`, `scripts/run-audit.sh`, `scripts/logs/audit-runs.md`, `scripts/logs/error-incidents.md`, `observability/audit/AUDIT.REPORT.md`, `observability/audit/AUDIT.METADATA.json`.
-- **Verification Contract:** `scripts/verify-roadmap-sync.sh`, `scripts/verify-version-sync.sh`, `scripts/process-integrity-sweep.sh`, `scripts/update_tree.sh`, `scripts/git-branch-log.sh`, `scripts/run-audit.sh` (all must pass; audit run refreshes the report/metadata/log); the final `TODO.complete.md` entry cites the merge report plus the branch log/automation outputs so the audit can be reviewed without additional context.
-- **Notes:** This TODO unlocks the Audit Service track, enforces automated merges with documented human approvals, and ensures version bumps happen even for tiny changes so derived apps inherit deterministically governed Git behavior.
+  - [ ] Keep the queue (`queue.md`), roadmap (`ROADMAP.md`), and version artifact (`VERSION.md`) synchronized so the Process Integrity gate can confirm the workspace is ready for the next TODO.
+  - [ ] Ensure the automation/log artifacts (`scripts/logs/*`, `git/branches.md`, `TREE.md`) remain committed after the last verification so auditors can see that the workspace is idle between TODOs.
+  - [ ] Document the idle state in the roadmap and TODO log so future workers know why no TODO is currently active.
+- **Allowed files:** `TODO.md`, `TODO.complete.md`, `ROADMAP.md`, `queue.md`, `VERSION.md`, `TREE.md`.
+- **Verification Contract:** No scripts run while idle; keep the last verification records intact and rerun the mandated scripts when the next TODO activates.
+- **Notes:** This placeholder keeps the canonical queue future-only until a new TODO arrives; it may be closed only when another TODO activates via a full governance briefing.
 
-## Future Implementation TODOs
+## Future Implementation TODOs## Future Implementation TODOs
+## Future Implementation TODOs## Future Implementation TODOs
 - None currently queued.
 
 ## Future Governance TODOs
 - **TODO-059:** App Marketplace + Atlas readiness.
-  - **TODO Type:** Governance-Only
-  - **Lifecycle:** Defined
-  - **Criticality:** Non-Critical
-  - **Objective:** Document App Marketplace and Atlas readiness guard rails.
-  - **Execution Scope:**
-    - [ ] Outline marketplace criteria in README and `APP.details.md`.
-    - [ ] Update queue/roadmap entries with integration readiness steps and automation references.
-    - [ ] Cite relevant laws for each guard rail.
-  - **Allowed files:** `README.md`, `APP.details.md`, `queue.md`, `TODO.md`, `TODO.complete.md`, `authority/laws.md`, `ROADMAP.md`, `scripts/update_tree.sh`, `VERSION.md`.
-  - **Verification Contract:** README/governance cite the guard rails, queue records follow-up TODOs, and automation scripts rerun cleanly.
-  - **Post-Completion Expectations:** Update the Feature Registry with the marketplace readiness story.
+-  - **TODO Type:** Governance-Only
+-  - **Lifecycle:** Defined
+-  - **Criticality:** Non-Critical
+-  - **Objective:** Document App Marketplace and Atlas readiness guard rails.
+-  - **Execution Scope:**
+-    - [ ] Outline marketplace criteria in README and `APP.details.md`.
+-    - [ ] Update queue/roadmap entries with integration readiness steps and automation references.
+-    - [ ] Cite relevant laws for each guard rail.
+-  - **Allowed files:** `README.md`, `APP.details.md`, `queue.md`, `TODO.md`, `TODO.complete.md`, `authority/laws.md`, `ROADMAP.md`, `scripts/update_tree.sh`, `VERSION.md`.
+-  - **Verification Contract:** README/governance cite the guard rails, queue records follow-up TODOs, and automation scripts rerun cleanly.
+-  - **Post-Completion Expectations:** Update the Feature Registry with the marketplace readiness story.
 ## TODO Template (for future use)
 - **Goal:** _Describe the desired outcome._
 - **Allowed files:** _List files the TODO may touch._

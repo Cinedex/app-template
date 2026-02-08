@@ -61,11 +61,11 @@ Times below are noted in MST (Arizona; UTC-7). The catalog runs in descending or
 
 ### Active TODO
 
-## **TODO-072** (Git Automation Enforcement & Mandatory Patch Versioning)
-  - Description: Harden git automation so all adds/commits/pushes/merges run through the automation suite, every change bumps the patch metadata, approval artifacts match the merge report, and the Audit Service remains deterministic before major template evolution.
-  - Status: <span style="color:green">Active</span> (Audit & Git automation enforcement).
-  - Date: <span style="color:gray">2026-02-08 12:00 MST</span>.
-  - Notes: Closes TODO-000, updates README/GOV/authority/CODEX.worker/git artifacts, rewrites the git-sync/branch-log/merge-with-approval/process-integrity drivers, enforces the Mandatory Patch Version Law, and ties the Audit Service track to the automation so auditors can rerun `scripts/run-audit.sh` before every major template shift.
+## **TODO-000** (Idle placeholder)
+  - Description: The workspace is idle while the governance steward prepares the next TODO; no active TODO exists until the placeholder is closed.
+  - Status: <span style="color:gray">Active</span> (Idle placeholder).
+  - Date: <span style="color:gray">2026-02-08 15:41 MST</span>.
+  - Notes: The guard rails stay healthy and the queue remains future-only; rerun the verification scripts when a new TODO reactivates the automation cadence.
 
 ### Completed TODOs (descending)
 
@@ -74,6 +74,12 @@ Times below are noted in MST (Arizona; UTC-7). The catalog runs in descending or
   - Status: <span style="color:gray">Completed</span>.
   - Date: <span style="color:gray">2026-02-08 12:00 MST</span>.
   - Notes: The idle placeholder stepped aside so the Process Integrity, Audit Service, and new git automation guard rails can advance without conflicting reminders.
+
+## **TODO-073** (CI Gate — Process Integrity + Audit Enforcement)
+  - Description: CI now runs the roadmap/version/process/audit stack on every push/PR, uploads the deterministic artifacts, and keeps merges gated until the canonical verifier passes while README/GOV/git/workflow/authority document the CI Verification Gate Law and CI Gatekeeper worker.
+  - Status: <span style="color:gray">Completed</span>.
+  - Date: <span style="color:gray">2026-02-08 15:41 MST</span>.
+  - Notes: The CI Verification Gate is now enforced via `.github/workflows/ci-integrity.yml` and `ci-merge-readiness.yml`, the CI Gatekeeper worker monitors drift, the audit snapshot references version 0.3.8.5, and the verification scripts/logs remain aligned before the workspace returns to the idle placeholder.
 
 - **TEMPLATE-IDENTITY-SANITIZATION**
   - Description: Strip product-specific identity from the template, rename the root folder, sanitize docs/scripts, and bump VERSION.md to 0.3.8.0 without altering automation or governance behavior.
