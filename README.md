@@ -86,11 +86,13 @@ Each template instantiation is driven by a `*.details.md` file: the details file
   - When it runs: From `scripts/run-safe.sh` or directly when workers follow the automation guardrails.
   - Laws enforced: Git Automation Law and Git Workflow Law.
   - Owned by: Git & Branch Tracking worker.
+  - Behavior: The script refuses to commit unless the active TODO is set (no `TODO-000` state) and the commit message includes that TODO ID; it runs `scripts/verify-roadmap-sync.sh` and `scripts/verify-version-sync.sh` after staging, enforces the mandatory patch bump/metadata updates in `VERSION.md`, and—after pushing—refreshes `git/branches.md` plus the Process Integrity sweep so the branch inventory records the clean/dirty status, ahead/behind signal, stale branch warnings, and merge-readiness indicator before the automation report closes.
 - `scripts/git-merge-with-approval.sh`
   - Purpose: Generates the merge report, requires a single approval artifact, and auto-merges only after the approval, then reruns the automation trio plus tree/branch refresh.
   - When it runs: During merges that target `master`, honoring the Git Cadence & Approval Law.
   - Laws enforced: Merge Reporting Law and Git Cadence & Approval Law.
   - Owned by: Git & Branch Tracking worker (with the Coordinator & Best Practices worker monitoring approvals).
+  - Behavior: Before approval, it fetches origin, checks target/source are up to date, performs a non-destructive conflict check, and logs any conflicts to `scripts/logs/error-incidents.md`; merges remain blocked if the approval artifact’s SHAs or timestamp disagree with the merge report, and after success the script pushes `master`, reruns `scripts/git-branch-log.sh`, `scripts/update_tree.sh`, and `scripts/process-integrity-sweep.sh`, regenerates the merge report, and records the final merge-readiness state.
 
 ## Git Automation Reporting Blueprint
 - **Branch log runs** – `scripts/git-branch-log.sh` refreshes `git/branches.md` with the active TODO, workspace status (`git status -sb`), branch inventory, and commit summary. The Branch Tracking worker runs it before and after every git operation so the log proves that “Git logs match the documented workflow,” satisfying TODO-056’s verification requirement.
@@ -127,6 +129,7 @@ Each template instantiation is driven by a `*.details.md` file: the details file
 
 ## Deterministic Versioning & Compatibility Blueprint
 - **Deterministic Versioning Law:** Every TODO completion updates `VERSION.md` (PATCH for governance-only, MICRO or higher for implementation, larger jumps when declared) so the canonical release string remains unique; the Manager Automation Hardening Law ties compliance to the closeout checklist, and the Non-Interruptible TODO Execution Law forbids closing without the new version.
+- **Mandatory Patch Version Law:** Every change bumps the patch digit, records the `Bumped By` TODO, and includes the UTC timestamp so audits can pinpoint each modification without needing micro/minor changes; `scripts/git-sync.sh` enforces this law by refusing to commit unless `VERSION.md` reflects the patch metadata plus the active TODO reference.
 - **Version Compatibility Contract Law:** Apps declare `minPlatformVersion` and `maxTestedPlatformVersion`, cite the compatibility matrix (`COMPATIBILITY.md` once created), and consult the law before shipping; compatibility gaps use the Platform Compatibility Enforcement Law to decide whether to block, warn, or inform.
 - **Standard Update Flow:** TODO close → verification suite → bump `VERSION.md` (metadata includes previous version, new version, bump type, triggering TODO, compatibility notes) → capture merge report + governing laws → notify apps and process watchers so they auto-update, warn, or block per the compatibility contract.
 - **Manager Automation Hardening Law:** Managers confirm the version bump, verification logs, roadmap/queue/todo alignment, and Non-Interruptible Law before signing off so deterministic releases stay reliable.

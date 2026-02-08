@@ -10,6 +10,7 @@
 
 ## Audit Service Track
 - The Audit Service operates as an always-on governance track that audits repository structure, governance, laws, workers, automation, queue/TODO consistency, versioning, observability, and template/app separation on every run. `scripts/run-audit.sh` regenerates `observability/audit/AUDIT.REPORT.md`, refreshes `AUDIT.METADATA.json`, and appends `scripts/logs/audit-runs.md` so the audit story is shareable with downstream apps, reviewers, and tools before any major template evolution. The roadmap calls out the audit service so managers know this track remains active alongside feature TODOs.
+- TODO-072 codifies the Audit Service track, tying the automation enforcement scripts, approval-gated merge requirements, and mandatory patch version metadata to the audit snapshot so cleanliness is recorded before the template evolves again.
 - Each roadmap refresh confirms the audit log’s latest run and ensures the audit metadata appears in the canonical artifact list; derived apps inherit the same audit scope, README guidance, and worker ownership described in the governance catalog.
 
 ## Prompt Normalization & Compiled TODO Pipeline
@@ -60,13 +61,19 @@ Times below are noted in MST (Arizona; UTC-7). The catalog runs in descending or
 
 ### Active TODO
 
-## **TODO-000** (Idle placeholder)
-  - Description: Idle placeholder that keeps canonical artifacts unchanged while the workspace waits for the next Executable TODO.
-  - Status: <span style="color:green">Active</span> (Idle placeholder).
-  - Date: <span style="color:gray">2026-02-06 13:30 MST</span>.
-  - Notes: Every guard rail stays aligned while the Process Integrity and Canonical Artifact laws hold the roadmap steady before the next governance run.
+## **TODO-072** (Git Automation Enforcement & Mandatory Patch Versioning)
+  - Description: Harden git automation so all adds/commits/pushes/merges run through the automation suite, every change bumps the patch metadata, approval artifacts match the merge report, and the Audit Service remains deterministic before major template evolution.
+  - Status: <span style="color:green">Active</span> (Audit & Git automation enforcement).
+  - Date: <span style="color:gray">2026-02-08 12:00 MST</span>.
+  - Notes: Closes TODO-000, updates README/GOV/authority/CODEX.worker/git artifacts, rewrites the git-sync/branch-log/merge-with-approval/process-integrity drivers, enforces the Mandatory Patch Version Law, and ties the Audit Service track to the automation so auditors can rerun `scripts/run-audit.sh` before every major template shift.
 
 ### Completed TODOs (descending)
+
+- **TODO-000**
+  - Description: Idle placeholder closed so the canonical automation track can resume with TODO-072.
+  - Status: <span style="color:gray">Completed</span>.
+  - Date: <span style="color:gray">2026-02-08 12:00 MST</span>.
+  - Notes: The idle placeholder stepped aside so the Process Integrity, Audit Service, and new git automation guard rails can advance without conflicting reminders.
 
 - **TEMPLATE-IDENTITY-SANITIZATION**
   - Description: Strip product-specific identity from the template, rename the root folder, sanitize docs/scripts, and bump VERSION.md to 0.3.8.0 without altering automation or governance behavior.

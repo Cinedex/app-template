@@ -7,6 +7,8 @@ roadmap_file="$root/ROADMAP.md"
 complete_file="$root/TODO.complete.md"
 merge_reports_dir="$root/git/merge-reports"
 error_log="$root/scripts/logs/error-incidents.md"
+todo_file="$root/TODO.md"
+active_todo_id="$(awk '/^## Active TODO$/,/^## Future Implementation/' "$todo_file" | grep -m1 '^## TODO-' | sed -E 's/^## (TODO-[0-9]+).*/\1/' || true)"
 
 log_incident() {
   local description="$1"
@@ -20,7 +22,7 @@ log_incident() {
     printf "2. **Version:** %s\n" "${version_current:-unknown}"
     printf "3. **Service/App:** Version Sync Gate\n"
     printf "4. **Description:** %s\n" "$description"
-    printf "5. **TODO reference:** TODO-064\n"
+    printf "5. **TODO reference:** %s\n" "${active_todo_id:-$todo_ref}"
     printf "6. **Remediation:** %s\n" "$remediation"
     printf "7. **Affected files:** %s\n" "$files"
     printf "8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh, scripts/verify-version-sync.sh\n"

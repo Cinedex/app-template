@@ -1,3 +1,9 @@
+## TODO-000 (Idle placeholder)
+- **Goal:** Retire the idle placeholder so the workspace can activate the incoming governance/automation TODO without leftover invariants.
+- **Files touched:** None (placeholder—no edits allowed while idle).
+- **Verification:** None (placeholder ensured the queue remained future-only until the next TODO activated).
+- **Notes:** TODO-000 signaled idle readiness; closing it lets TODO-072 (Git Automation Enforcement & Mandatory Patch Versioning) become the single active TODO.
+
 ## TODO-AUDIT-SERVICE-001 (Platform Audit Service)
 - **Goal:** Add the governed Audit Service so the template produces deterministic, shareable audit snapshots before every major evolution, and wire automation, governance, laws, workers, and logs into the new audit track.
 - **Files touched:** `README.md`, `GOVERNANCE.md`, `ROADMAP.md`, `CODEX.worker.md`, `authority/laws.md`, `observability/audit/AUDIT.README.md`, `observability/audit/AUDIT.SCOPE.md`, `observability/audit/AUDIT.REPORT.md`, `observability/audit/AUDIT.METADATA.json`, `scripts/run-audit.sh`, `scripts/logs/audit-runs.md`, `TODO.complete.md`.

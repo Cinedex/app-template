@@ -4,6 +4,37 @@ set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 approval_dir="$root/git/approvals/approved"
 canonical_branch="master"
+todo_file="$root/TODO.md"
+error_log="$root/scripts/logs/error-incidents.md"
+
+active_todo_id="$(awk '/^## Active TODO$/,/^## Future Implementation/' "$todo_file" | grep -m1 '^## TODO-' | sed -E 's/^## (TODO-[0-9]+).*/\1/' || true)"
+
+log_conflict_incident() {
+  local desc="$1"
+  local remediation="$2"
+  local branches="$3"
+  cat <<EOF >> "$error_log"
+
+- **Date (UTC):** $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+- **Description:** $desc
+- **TODO reference:** ${active_todo_id:-todo-unknown}
+- **Remediation:** $remediation
+- **Affected branches:** $branches
+- **Automation/log pointer:** scripts/git-merge-with-approval.sh
+EOF
+}
+
+ensure_conflict_free() {
+  if git merge --no-ff --no-commit --no-verify "$source_branch" >/dev/null 2>&1; then
+    git merge --abort >/dev/null 2>&1 || true
+  else
+    git merge --abort >/dev/null 2>&1 || true
+    log_conflict_incident "Merge conflict detected between $source_branch and $target_branch." \
+      "Resolve conflicts on $target_branch locally, regenerate the approval artifact, and rerun this script." \
+      "$target_branch / $source_branch"
+    fail_merge "Conflicts detected between $source_branch and $target_branch; review scripts/logs/error-incidents.md."
+  fi
+}
 
 usage() {
   cat <<'EOF'
@@ -78,6 +109,7 @@ if ! grep -qF "Source SHA: $source_sha" "$artifact"; then
 fi
 
 git checkout "$target_branch"
+ensure_conflict_free
 git merge --no-ff --no-edit "$source_branch"
 git push origin "$target_branch"
 
@@ -89,6 +121,7 @@ fi
 
 "$root/scripts/git-branch-log.sh"
 "$root/scripts/update_tree.sh"
+"$root/scripts/process-integrity-sweep.sh"
 
 printf "Merge complete: %s now includes %s.\n" "$target_branch" "$source_branch"
 printf "Final merge report: %s\n" "$final_report_file"

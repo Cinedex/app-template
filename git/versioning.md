@@ -9,12 +9,14 @@ The platform uses deterministic versioning for the control workspace plus every 
 
 ## Version artifact
 - **Canonical artifact:** `VERSION.md` stores the platform’s current and previous version, the TODO that triggered the bump, and the timestamp. Automation scripts read it so merge reports, observability logs, and status dashboards register the same version string.
+- **Patch metadata:** The file now records the full `micro.patch` string, the Bumped By TODO, the UTC timestamp, and a short notes entry; `scripts/git-sync.sh` refuses to commit unless `VERSION.md` includes the new patch metadata so the Mandatory Patch Version Law remains visible.
 - **Observability tie-in:** The `scripts/logs/observability-runs.md` entries and `git/merge-report` output parse this artifact so Pulse dashboards and release reports display the same string; the Feature Registry Versioning entry references `VERSION.md` so release validation is traceable back to the enforcing TODO.
 - **Canonical target branch:** All releases, verification merges, and automation reports anchor on the canonical target branch `master`, keeping `VERSION.md` aligned with the master timeline so auditors always trace the release string to the same branch.
 - **Verification:** TODO-060 ensures `VERSION.md` exists, encodes a valid semantic version, and ties its bump to the task; auditors confirm the artifact before marking the feature Implemented.
 
 ## Deterministic bump contract
 - **Micro increments:** Every commit that changes the platform—documentation, automation, or code—must bump the micro digit so each change has its own release marker. Minor/major increments remain reserved for milestone or architectural changes and still log the previous value in `VERSION.md` for auditors.
+- **Mandatory patch increments:** The Mandatory Patch Version Law closes the gap for tiny changes—every git change also increments the patch digit, records the `Bumped By` TODO plus notes, and stamps the UTC timestamp so inspection logs can prove when each automation run occurred.
 - **Artifact update steps:** When a bump occurs, update `VERSION.md` by setting `Previous Version` to the last `Current Version`, incrementing the `Current Version`, recording the `Bumped By` TODO, and stamping `Created At` with the UTC timestamp of the automation run. Add a short `Notes` bullet that explains why the bump happened (e.g., TODO number and key verification outputs).
 - **Automation awareness:** Observability scripts (`scripts/logs/observability-runs.md`, Pulse instrumentation runs) and `scripts/git-merge-report.sh` read `VERSION.md` before generating logs so every automation output includes the new string and auditors can trace which TODO produced the bump.
 

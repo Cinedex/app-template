@@ -4,19 +4,22 @@ This list always shows exactly one active TODO. Completed TODOs move to `TODO.co
 
 ## Active TODO
 
-## TODO-000 (Idle placeholder)
-- **TODO Type:** Governance-Only
-- **Lifecycle:** Idle
-- **Criticality:** Non-Critical
-- **Status:** Idle
-- **Objective:** Keep the workspace idle until the next TODO activates, ensuring canonical artifacts remain aligned and the queue stays future-only while no active TODO exists.
+## TODO-072 (Git Automation Enforcement & Mandatory Patch Versioning)
+- **TODO Type:** Governance + Automation
+- **Lifecycle:** Implemented
+- **Criticality:** Critical
+- **Status:** Active
+- **Objective:** Harden the Git automation pipeline so commits/merges remain fully scripted, every change bumps the patch metadata, audit tooling stays deterministic, and governance documents enumerate the automation/law coverage before any major template evolution.
 - **Execution Scope:**
-  - [ ] Keep `queue.md` future-only and aligned with `ROADMAP.md`/`TODO.md`, honoring the Canonical Artifact and Roadmap Sync laws.
-  - [ ] Leave README/GOVERNANCE/authority/automation artifacts unchanged while no TODO is active so the template state remains frozen.
-  - [ ] Preserve `VERSION.md`, `TREE.md`, and the automation logs until the next TODO opens so the Process Integrity sweep sees an unchanged baseline.
-- **Allowed files:** None (placeholder; no edits allowed while idle).
-- **Verification Contract:** Placeholder state; verification resumes when the next TODO activates and reruns the canonical gates.
-- **Notes:** The steward may activate the next queued TODO once it satisfies the Executable TODO Law; this placeholder keeps the Process Integrity sweep from profiling drift in between runs.
+  - [ ] Close TODO-000 and open TODO-072 with an updated roadmap/queue narrative so the canonical workspace reflects the new governance track.
+  - [ ] Update `scripts/git-sync.sh`, `scripts/git-merge-with-approval.sh`, `scripts/git-branch-log.sh`, and `scripts/process-integrity-sweep.sh` to enforce the new automation guard rails, approval gating, conflict/drift detection, and mandatory version bump before every commit.
+  - [ ] Document the Git automation enforcement, mandatory patch versioning, and Audit Service governance track inside `README.md`, `GOVERNANCE.md`, `CODEX.worker.md`, `authority/laws.md`, `git/workflow.md`, and `git/versioning.md`, linking to the required laws and workers.
+  - [ ] Reconcile `VERSION.md` with the new patch metadata schema (Current, Previous, Full version, Bumped By, Timestamp, Notes) and bump the patch digit for this change.
+  - [ ] Run the verification scripts (`scripts/verify-roadmap-sync.sh`, `scripts/verify-version-sync.sh`, `scripts/process-integrity-sweep.sh`, `scripts/update_tree.sh`, `scripts/git-branch-log.sh`, `scripts/run-audit.sh`) so the automation state, audit log, and tree snapshot capture the enforced discipline.
+  - [ ] Record the automation outcomes plus the Audit Service log/metadata updates so downstream apps inherit the deterministic audit snapshot, error logs, and branch inventory.
+- **Allowed files:** `README.md`, `GOVERNANCE.md`, `authority/laws.md`, `CODEX.worker.md`, `ROADMAP.md`, `TODO.md`, `TODO.complete.md`, `VERSION.md`, `TREE.md`, `queue.md`, `git/workflow.md`, `git/versioning.md`, `scripts/git-sync.sh`, `scripts/git-merge-with-approval.sh`, `scripts/git-branch-log.sh`, `scripts/process-integrity-sweep.sh`, `scripts/run-audit.sh`, `scripts/logs/audit-runs.md`, `scripts/logs/error-incidents.md`, `observability/audit/AUDIT.REPORT.md`, `observability/audit/AUDIT.METADATA.json`.
+- **Verification Contract:** `scripts/verify-roadmap-sync.sh`, `scripts/verify-version-sync.sh`, `scripts/process-integrity-sweep.sh`, `scripts/update_tree.sh`, `scripts/git-branch-log.sh`, `scripts/run-audit.sh` (all must pass; audit run refreshes the report/metadata/log); the final `TODO.complete.md` entry cites the merge report plus the branch log/automation outputs so the audit can be reviewed without additional context.
+- **Notes:** This TODO unlocks the Audit Service track, enforces automated merges with documented human approvals, and ensures version bumps happen even for tiny changes so derived apps inherit deterministically governed Git behavior.
 
 ## Future Implementation TODOs
 - None currently queued.

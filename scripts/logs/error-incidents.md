@@ -443,3 +443,30 @@
 6. **Remediation:** Document TEMPLATE-IDENTITY-SANITIZATION in the roadmap/completed log so the version bump is traceable.
 7. **Affected files:** /Users/levielizaga/Sites/app-platform-template/ROADMAP.md, /Users/levielizaga/Sites/app-platform-template/TODO.complete.md
 8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh, scripts/verify-version-sync.sh
+
+1. **Date (UTC):** 2026-02-08T21:52:02Z
+2. **Version:** 0.3.8
+3. **Service/App:** Roadmap Sync Gate
+4. **Description:** /Users/levielizaga/Sites/app-platform-template/ROADMAP.md Active section does not list TODO-072.
+5. **TODO reference:** TODO-072
+6. **Remediation:** Update ROADMAP.md so the Active TODO section references TODO-072.
+7. **Affected files:** /Users/levielizaga/Sites/app-platform-template/ROADMAP.md
+8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh
+
+1. **Date (UTC):** 2026-02-08T21:52:16Z
+2. **Version:** 0.3.8
+3. **Service/App:** Roadmap Sync Gate
+4. **Description:** /Users/levielizaga/Sites/app-platform-template/ROADMAP.md Completed section lacks TODO-000.
+5. **TODO reference:** TODO-072
+6. **Remediation:** Mark TODO-000 as completed in ROADMAP.md before closing the gate.
+7. **Affected files:** /Users/levielizaga/Sites/app-platform-template/ROADMAP.md
+8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh
+
+1. **Date (UTC):** 2026-02-08T21:52:31Z
+2. **Version:** 0.3.8
+3. **Service/App:** Version Sync Gate
+4. **Description:** Merge report /Users/levielizaga/Sites/app-platform-template/git/merge-reports/merge-report-master-20260206T204027Z.md omits the Bumped By TODO.
+5. **TODO reference:** TODO-072
+6. **Remediation:** Include the bumped TODO reference when rerunning scripts/git-merge-report.sh.
+7. **Affected files:** /Users/levielizaga/Sites/app-platform-template/git/merge-reports/merge-report-master-20260206T204027Z.md
+8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh, scripts/verify-version-sync.sh
