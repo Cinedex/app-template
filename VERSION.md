@@ -10,7 +10,6 @@
 - **Compatibility Notes:** Audit Service + Git automation hardening (pre-clean reconciliation)
 - **Notes:** Audit Service + Git automation hardening (pre-clean reconciliation)
 - **Notes:** Audit Service + Git automation hardening (pre-clean reconciliation)
-- **Notes:** Audit Service + Git automation hardening (pre-clean reconciliation)
 - **Deterministic rule:** Versioning follows MAJOR.MINOR.MICRO.PATCH. Every TODO completion updates at least the PATCH digit, governance-only TODOs bump PATCH, implementation TODOs bump MICRO (or higher when explicitly declared), and no two commits may share the same string. `VERSION.md` is canonical—the artifact records the prior value, bump type, triggering TODO, and any compatibility guidance so release history remains audit-ready.
 - **Observability link:** `scripts/logs/observability-runs.md`, `scripts/git-merge-report.sh`, and Pulse dashboards read this artifact so automation logs, merge notes, and release timelines share the same canonical version string.
 - **Traceability notes:** The Feature Registry Versioning entry, automation logs, and merge reports cite this artifact so every platform release ties back to the TODO, law references, and automation verification records.
@@ -23,7 +22,6 @@
 - **Compatibility notes:** Audit Service + Git automation hardening (pre-clean reconciliation)
 - **Patch string:** 0.3.8.4
 - **Patch string:** 0.3.8.3
-- **Patch string:** 0.3.8.2
 
 ## Surface Version Matrix
 - **Platform Version:** 0.3.8.4 (MAJOR=0, MINOR=3, MICRO=8, PATCH=4)
