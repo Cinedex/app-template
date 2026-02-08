@@ -153,7 +153,7 @@ for num in {1..12}; do
 done
 
 metadata="observability/audit/AUDIT.METADATA.json"
-cat <<'EOF' > "$metadata"
+cat <<EOF > "$metadata"
 {
   "last_run": "$timestamp",
   "commit": "$commit",
