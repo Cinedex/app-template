@@ -29,7 +29,7 @@
 - **Marketing Surface Version:** 0.3.3 (matches MAJOR.MINOR and may lag behind MICRO/PATCH; drift warnings appear when MAJOR.MINOR diverge).
 - **Documentation Version:** 0.3 (matches MAJOR; warns when the canonical MAJOR changes).
 - **Surface Version Notes:** Surface declarations act as compatibility signals—not execution controls. Every surface references `VERSION.md` so the Process Integrity sweep and Progress Watchdog can surface drift warnings tied to the canonical platform version.
-- **Snapshot timestamp (UTC):** 2026-02-08T21:34:36Z
+- **Snapshot timestamp (UTC):** 2026-02-08T21:33:44Z
 
 ## 2. Structural Audit
 - Observed top-level directories: .githooks, authority, features, git, marketing, observability, pulse, scripts.
