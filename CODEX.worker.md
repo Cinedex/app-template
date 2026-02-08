@@ -61,6 +61,36 @@ The Codex Worker executes approved TODOs. Workers do not initiate new goals or w
   - **Visibility:** Documented in `GOVERNANCE.md`, referenced in `CODEX.worker.md`, and surfaced manually via `scripts/logs/error-incidents.md` or similar logs so future agents understand the watchdog’s findings before acting.
 - **Worker Oversight reminder:** Every worker confirms their tasks are recorded in the roadmap (phase/todo number), that the queue entry exists for future work, and that the Coordinator & Best Practices worker logs the roster check before a batch starts. This ensures no worker operates outside the written plan.
 
+### Audit Service Workers
+
+#### Audit Steward
+- **Purpose:** Owns the audit scope, keeps the report accurate, and gates TODO closure whenever the audit drifts so the platform template never evolves without a fresh snapshot.
+- **Inputs:** `observability/audit/AUDIT.SCOPE.md`, `observability/audit/AUDIT.REPORT.md`, `GOVERNANCE.md`, `CODEX.worker.md`, `authority/laws.md`, the current `TODO.md`/`queue.md`/`ROADMAP.md` state, and automation logs (`scripts/logs/audit-runs.md`).
+- **Outputs:** Regenerated `observability/audit/AUDIT.REPORT.md`, `observability/audit/AUDIT.METADATA.json`, updated `scripts/logs/audit-runs.md` entries, and the audit state references inside TODO verification notes or governance when a drift is observed.
+- **Failure modes:** Stale `AUDIT.REPORT.md`, missing metadata/log entries, inconsistent section coverage, or failure to rerun `scripts/run-audit.sh` before major governance changes.
+- **Enforcement authority:** Blocks any TODO closure (per the Executable TODO and Process Integrity laws) until the audit reruns, requires corrections, and escalates to the Governance Auditor if the scope is outdated.
+
+#### Governance Auditor
+- **Purpose:** Verifies that `authority/laws.md`, `GOVERNANCE.md`, and the roadmap/queue articulate every enforcement binding needed for the audit so laws stay complete and documented.
+- **Inputs:** `authority/laws.md`, `GOVERNANCE.md`, `ROADMAP.md`, `TODO.md`, `VERSION.md`, and audit sections that describe governance completeness.
+- **Outputs:** Findings or law updates captured inside `observability/audit/AUDIT.REPORT.md`, TODO references for missing governance coverage, and coordination notes for the Audit Steward when a law/declaration needs refinement.
+- **Failure modes:** Missing Audit Integrity Law bindings, incomplete governance statements, or non-licensed scope claims that would mislead downstream templates.
+- **Enforcement authority:** Signals the Audit Steward to halt TODO closures or roadmap moves until the governance narrative covers the required audit guarantees.
+
+#### Automation Auditor
+- **Purpose:** Confirms `scripts/run-audit.sh`, supporting automation, and the automation inventory stay documented, verified, and free of drift.
+- **Inputs:** `scripts/run-audit.sh`, `scripts/update_tree.sh`, automation logs (especially `scripts/logs/audit-runs.md`), `README.md`, `observability/audit/AUDIT.SCOPE.md`, and the Process Integrity/Automation laws.
+- **Outputs:** Automation accuracy notes within `AUDIT.REPORT.md`, metadata updates, updated automation inventory references, and action items if a script no longer matches documentation.
+- **Failure modes:** Missing automation entries, script drift, `AUDIT.REPORT.md` missing sections, or logs that stop updating after script runs.
+- **Enforcement authority:** Pulls the Template Integrity Auditor in when automation gaps appear and blocks work until the automation documentation matches reality.
+
+#### Template Integrity Auditor
+- **Purpose:** Ensures the template-level audit instrumentation stays separate from any app-specific wiring so derived repos inherit consistent governance without leakage.
+- **Inputs:** `APP.details.md`, `README.md`, `GOVERNANCE.md`, `observability/audit/AUDIT.README.md`, `observability/audit/AUDIT.SCOPE.md`, and derived-artifact guidance.
+- **Outputs:** Template separation findings inside `AUDIT.REPORT.md`, required TODO references for removing app-specific wording, and governance notes that reaffirm template/app boundaries.
+- **Failure modes:** Template docs or audit Scope referencing app-only features, inconsistent template-other crossovers, or new audit files leaking app-specific instructions.
+- **Enforcement authority:** Prevents the template from evolving (roadmap/queue transitions) until the leakage is corrected, requiring the Audit Steward to rerun the audit once the artifacts are pure template-level.
+
 ### Auditor Worker (Template)
 - **Purpose:** Detect violations of declared system invariants and enqueue corrective TODOs.
 - **Standard Responsibilities:** Scan authoritative artifacts (`authority/laws.md`, `GOVERNANCE.md`, `ROADMAP.md`, `TODO.complete.md`, `TODO.md`), verify downstream realization exists (implementation + verification), and insert corrective Execution Scope-compliant TODOs into `queue.md` and `ROADMAP.md` when gaps appear.

@@ -11,6 +11,7 @@ This tree summarizes the current control documents and must be updated whenever 
 - `git/merge-reports/`
 - `marketing/`
 - `observability/`
+- `observability/audit/`
 - `pulse/`
 - `scripts/`
 - `scripts/logs/`
@@ -72,6 +73,10 @@ This tree summarizes the current control documents and must be updated whenever 
 - `git/versioning.md`
 - `git/workflow.md`
 - `marketing/status.md`
+- `observability/audit/AUDIT.METADATA.json`
+- `observability/audit/AUDIT.README.md`
+- `observability/audit/AUDIT.REPORT.md`
+- `observability/audit/AUDIT.SCOPE.md`
 - `observability/runtime-wiring.md`
 - `pulse/ingestion-verification.md`
 - `queue.md`
@@ -84,6 +89,7 @@ This tree summarizes the current control documents and must be updated whenever 
 - `scripts/git-sync.sh`
 - `scripts/install-githooks.sh`
 - `scripts/integrations-preview.sh`
+- `scripts/logs/audit-runs.md`
 - `scripts/logs/automation-inventory.md`
 - `scripts/logs/error-incidents.md`
 - `scripts/logs/marketing-outreach-run.md`
@@ -96,6 +102,7 @@ This tree summarizes the current control documents and must be updated whenever 
 - `scripts/process-integrity-sweep.sh`
 - `scripts/reliability-preview.sh`
 - `scripts/roadmap-preview.sh`
+- `scripts/run-audit.sh`
 - `scripts/run-safe.sh`
 - `scripts/update_tree.sh`
 - `scripts/verify-roadmap-sync.sh`

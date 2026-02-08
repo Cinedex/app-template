@@ -8,6 +8,10 @@
 ## Human vs Executable Roadmaps
 - `ROADMAP.md` captures the executable history and sequencing; `APP.ROADMAP.md` remains a descriptive “human view” that echoes those phases without controlling automation. Short-term drift is acceptable so long as the Process Integrity sweeps detect and correct it after each TODO close, and synchronization occurs whenever a TODO completes so canonical artifacts converge again.
 
+## Audit Service Track
+- The Audit Service operates as an always-on governance track that audits repository structure, governance, laws, workers, automation, queue/TODO consistency, versioning, observability, and template/app separation on every run. `scripts/run-audit.sh` regenerates `observability/audit/AUDIT.REPORT.md`, refreshes `AUDIT.METADATA.json`, and appends `scripts/logs/audit-runs.md` so the audit story is shareable with downstream apps, reviewers, and tools before any major template evolution. The roadmap calls out the audit service so managers know this track remains active alongside feature TODOs.
+- Each roadmap refresh confirms the audit log’s latest run and ensures the audit metadata appears in the canonical artifact list; derived apps inherit the same audit scope, README guidance, and worker ownership described in the governance catalog.
+
 ## Prompt Normalization & Compiled TODO Pipeline
 - The Feature Registry Compiler ensures every feature/state is cataloged; Pulse and roadmap gating consume the registry.
 - The Trace Graph records upstream causes (laws/governance/roadmap) for each TODO.

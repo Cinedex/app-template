@@ -1,3 +1,9 @@
+## TODO-AUDIT-SERVICE-001 (Platform Audit Service)
+- **Goal:** Add the governed Audit Service so the template produces deterministic, shareable audit snapshots before every major evolution, and wire automation, governance, laws, workers, and logs into the new audit track.
+- **Files touched:** `README.md`, `GOVERNANCE.md`, `ROADMAP.md`, `CODEX.worker.md`, `authority/laws.md`, `observability/audit/AUDIT.README.md`, `observability/audit/AUDIT.SCOPE.md`, `observability/audit/AUDIT.REPORT.md`, `observability/audit/AUDIT.METADATA.json`, `scripts/run-audit.sh`, `scripts/logs/audit-runs.md`, `TODO.complete.md`.
+- **Verification:** `bash scripts/run-audit.sh`, `bash scripts/update_tree.sh` (ensures `TREE.md` reflects the new audit folder and deterministic snapshots; the audit log now records the UTC timestamp, commit, version, and PASS result for the run).
+- **Notes:** The audit metadata/log entry now ties the audit to the canonical `VERSION.md` string so downstream reviewers (including ChatGPT) can read `observability/audit/AUDIT.REPORT.md` without additional context; rerun the audit before any major governance or roadmap changes.
+
 ## TODO-TEMPLATE-001 (Platform Template Extraction & Normalization)
 - **Goal:** Transform the completed Phase-1 execution engine into a reusable, app-neutral platform template by generalizing README/GOVERNANCE, the law catalog, manager/worker roles, and the roadmap while documenting how `*.details.md` drives derived artifacts.
 - **Files touched:** `README.md`, `GOVERNANCE.md`, `APP.ROADMAP.md`, `ROADMAP.md`, `TODO.md`, `TODO.complete.md`, `VERSION.md`, `CODEX.manager.md`, `CODEX.worker.md`, `authority/laws.md`, `features/FEATURE.REGISTRY.md`, `queue.md`, `TREE.md`, `git/branches.md`, `git/merge-reports/merge-report-master-20260206T200624Z.md`.

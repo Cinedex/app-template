@@ -154,6 +154,12 @@ The Executable TODO Law is its own guardrail. Workers begin work only after the 
 - Refer to the automation programs inside TODOs and highlight their outputs when they alter workflow.
 - Batch documentation, blueprinting, and verification steps into single-deterministic cycles so workers can complete them without waiting for follow-ups.
 
+## Audit Service
+- The Audit Service is a governed platform capability; deterministic audits must run before any major template evolution, governance rewrite, or roadmap phase shift so the Process Integrity, Versioning, and Audit Integrity laws stay aligned. Workspaces inherit the same audit artifacts (`observability/audit/AUDIT.README.md`, `AUDIT.SCOPE.md`, `AUDIT.REPORT.md`, `AUDIT.METADATA.json`, `scripts/run-audit.sh`, and `scripts/logs/audit-runs.md`) and the same workers (Audit Steward, Governance Auditor, Automation Auditor, Template Integrity Auditor) described in `CODEX.worker.md`.
+- The audit runner guards the template state: it asserts a clean git tree, captures `git status`, `git rev-parse HEAD`, and `VERSION.md`, regenerates `AUDIT.REPORT.md` deterministically, refreshes `AUDIT.METADATA.json`, and appends the standardized log entry so reviewers (including ChatGPT) can understand every audit without oral context.
+- The Process Integrity Auditor, Governance Auditor, and Template Integrity Auditor enforce the audit scope, block TODOs when the snapshot is stale, and keep the audit metadata/logs current; the Sequencer and Automation Auditor confirm `scripts/update_tree.sh` ran after each audit so `TREE.md` captures `observability/audit/` and the log/metadata files.
+- This governance mandate also appears in `ROADMAP.md` (Audit Service track) and `authority/laws.md` (Audit Integrity Law) so downstream apps inherit the mandatory audit before any template shaping change.
+
 ## Batch Completion Oversight
 - The Sequencer & Batch Oversight worker tracks every trio of sequential TODOs and delays the final documentation/verification report until the third task closes. This ensures we honor the Batch Verification Law while avoiding redundant daily reporting.
 - After the third TODO finishes, the Sequencer gathers the automation logs, queue updates, law references, merge reports, and verification notes and records them in the latest TODO's verification block plus any dedicated log; `scripts/update_tree.sh` reruns to capture the state, and the triple-cycle summary is appended to `TODO.complete.md`. The Sequencer also confirms the Queue & Tree Automation Law was satisfied before closing the batch.

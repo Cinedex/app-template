@@ -164,6 +164,19 @@ Each template instantiation is driven by a `*.details.md` file: the details file
 - Observability runs log their scripts (`scripts/update_tree.sh`, Observability smoke tests, automation tracker entries) into `scripts/logs/observability-runs.md` for the Sequencer batch, and the Feature Lifecycle Status report surfaces instrumentation state for Pulse dashboards.
 - Observability guard rails enforce truth governance (law references in automation logs), reliability (retry/alert policies), and UX (clean, modern notifications) before a roadmap phase launches.
 
+## Audit Service
+- **Template-level infrastructure:** The Audit Service is documentation + automation + worker-owned auditing that every derived repo inherits; it never mutates business logic and is governed like any other law-backed capability so the template/queue/roadmap state stays deterministic before major evolution.
+- **Artifacts:** `observability/audit/AUDIT.README.md` explains the audit narrative, `AUDIT.SCOPE.md` lists the nine coverage areas, and `AUDIT.REPORT.md` plus `AUDIT.METADATA.json` are the self-contained snapshots that observers (including ChatGPT) can read without oral context.
+- **Automation:** `scripts/run-audit.sh` regenerates the report, metadata, and log entry; the runner asserts a clean git state, captures `git status`, `git rev-parse HEAD`, `VERSION.md`, and rewrites the audit report deterministically, and the new log at `scripts/logs/audit-runs.md` records every pass/warn.
+- **Worker ownership:** The Audit Steward and supporting auditors (Governance Auditor, Automation Auditor, Template Integrity Auditor) enforce scoping, report freshness, and blocking behavior when the audit drifts; their responsibilities live in `CODEX.worker.md`.
+
+### Running the audit
+1. Confirm `TODO.md`, `queue.md`, and the roadmap describe the latest template intent so the audit touches the current canonical story.
+2. Execute `bash scripts/run-audit.sh`. The script prints the git status it observed, rewrites `observability/audit/AUDIT.REPORT.md`, updates `AUDIT.METADATA.json`, and appends a timestamped entry to `scripts/logs/audit-runs.md`.
+3. Share `observability/audit/AUDIT.REPORT.md` (and optionally the metadata/log) with external reviewers or automation so they can understand the platform state without extra context before any major template shift.
+
+The Audit Service now appears in the roadmap, governance, and law catalog so auditors know that deterministic template audits are mandatory prior to major evolution.
+
 ## LLM Safeguards & Prompt Policy
 - The **LLM Safeguards Law** and **Truth Governance Law** require every prompt or assistant interaction to describe its policy context, guard rails, and rate-limit posture before execution; these statements now live in README/GOVERNANCE so every normalized prompt references the same deterministic policy.
 - Observability instrumentation captures sanitized prompt flows, hallucination checks, and rate-limit events so the Sequencer can cite the `scripts/logs/observability-runs.md` entry for TODO-058 when verifying the Observability Automation Law’s compliance with the prompt policy.
