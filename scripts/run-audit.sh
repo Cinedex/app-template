@@ -72,43 +72,59 @@ if [[ -z "$active_todo_line" ]]; then
   active_todo_line="(no active TODO)"
 fi
 
-# Use a normal here-doc so variables expand.
-report="observability/audit/AUDIT.REPORT.md"
-cat <<EOF > "$report"
-# Audit Report
+# Build the report via Python to keep the content deterministic while still expanding bash variables.
+export AUDIT_REPO_NAME="$repo_name"
+export AUDIT_COMMIT="$commit"
+export AUDIT_STRUCTURAL_LIST="$structural_list"
+export AUDIT_GOV_HEADINGS="$gov_headings"
+export AUDIT_LAW_COUNT="$law_count"
+export AUDIT_WORKER_SECTIONS="$worker_sections"
+export AUDIT_SCRIPT_LIST="$script_list"
+export AUDIT_SCRIPT_COUNT="$script_count"
+export AUDIT_QUEUE_HEAD="$queue_head"
+export AUDIT_ACTIVE_TODO_LINE="$active_todo_line"
+export AUDIT_VERSION_FULL="$version_full"
+export AUDIT_TIMESTAMP="$timestamp"
+python3 - <<'PY'
+from pathlib import Path
+import os
+
+os.makedirs("observability/audit", exist_ok=True)
+report = Path("observability/audit/AUDIT.REPORT.md")
+report.write_text(f"""# Audit Report
 
 ## 1. Audit Header
-- **Repository:** $repo_name
-- **Commit SHA:** $commit
-- **VERSION.md:** $version_full
-- **Snapshot timestamp (UTC):** $timestamp
+- **Repository:** {os.environ['AUDIT_REPO_NAME']}
+- **Commit SHA:** {os.environ['AUDIT_COMMIT']}
+- **VERSION.md:** {os.environ['AUDIT_VERSION_FULL']}
+- **Snapshot timestamp (UTC):** {os.environ['AUDIT_TIMESTAMP']}
 
 ## 2. Structural Audit
-- Observed top-level directories: $structural_list.
+- Observed top-level directories: {os.environ['AUDIT_STRUCTURAL_LIST']}.
 - `TREE.md` inventories these directories and now documents the `observability/audit/` folder plus the audit README, scope, report, and metadata files.
 
 ## 3. Governance Audit
-- `GOVERNANCE.md` lists $gov_headings major headings, including the Audit Service obligations that tie mandatory audits to major template evolution and the audit automation track described inside `observability/audit/AUDIT.README.md`.
+- `GOVERNANCE.md` lists {os.environ['AUDIT_GOV_HEADINGS']} major headings, including the Audit Service obligations that tie mandatory audits to major template evolution and the audit automation track described inside `observability/audit/AUDIT.README.md`.
 - The governance narrative explicitly names the Audit Service as a governed platform capability so every roadmap/worker update references the deterministic audit scope before major changes.
 
 ## 4. Law Coverage Audit
-- `authority/laws.md` catalogs $law_count laws and now includes the Audit Integrity Law that binds Process Integrity, versioning, and audit automation together.
+- `authority/laws.md` catalogs {os.environ['AUDIT_LAW_COUNT']} laws and now includes the Audit Integrity Law that binds Process Integrity, versioning, and audit automation together.
 - The law points auditors at `scripts/run-audit.sh`, `observability/audit/AUDIT.REPORT.md`, and `scripts/logs/audit-runs.md` so enforcement stays visible in the same place as other deterministic automations.
 
 ## 5. Worker Coverage Audit
-- `CODEX.worker.md` records $worker_sections worker sections; the Audit Steward, Governance Auditor, Automation Auditor, and Template Integrity Auditor own this automation and report maintenance.
+- `CODEX.worker.md` records {os.environ['AUDIT_WORKER_SECTIONS']} worker sections; the Audit Steward, Governance Auditor, Automation Auditor, and Template Integrity Auditor own this automation and report maintenance.
 - The worker roster now defines inputs/outputs/failure modes/enforcement authority so every worker knows how to keep the audit in scope.
 
 ## 6. Automation & Script Audit
-- There are $script_count automation scripts in `scripts/` (for example: $script_list) and the new `scripts/run-audit.sh` reruns the audit without manual prompts.
+- There are {os.environ['AUDIT_SCRIPT_COUNT']} automation scripts in `scripts/` (for example: {os.environ['AUDIT_SCRIPT_LIST']}) and the new `scripts/run-audit.sh` reruns the audit without manual prompts.
 - The automation log in `scripts/logs/audit-runs.md` documents each run, so reviewers can quickly see the UTC timestamp, commit, version, and PASS/WARN state.
 
 ## 7. Queue / TODO / Roadmap Audit
-- `TODO.md` names the active entry as: $active_todo_line.
-- `queue.md` is canonical (top reference: $queue_head) and the roadmap now calls out the audit track as an always-on governance stream so the Process Integrity/Queue Discipline laws stay enforced.
+- `TODO.md` names the active entry as: {os.environ['AUDIT_ACTIVE_TODO_LINE']}.
+- `queue.md` is canonical (top reference: {os.environ['AUDIT_QUEUE_HEAD']}) and the roadmap now calls out the audit track as an always-on governance stream so the Process Integrity/Queue Discipline laws stay enforced.
 
 ## 8. Versioning & Compatibility Audit
-- The audit references `VERSION.md` $version_full and notes that the deterministic versioning laws and compatibility contracts continue to gate template evolution.
+- The audit references `VERSION.md` {os.environ['AUDIT_VERSION_FULL']} and notes that the deterministic versioning laws and compatibility contracts continue to gate template evolution.
 - The same version string appears in the audit metadata so tooling can tie the report to the release artifact.
 
 ## 9. Observability Audit
@@ -124,7 +140,9 @@ cat <<EOF > "$report"
 
 ## 12. Required Follow-Up TODOs
 - None; rerun `scripts/run-audit.sh` before any major template evolution or governance refactor to keep `AUDIT.REPORT.md` and the log current.
-EOF
+""")
+PY
+unset AUDIT_REPO_NAME AUDIT_COMMIT AUDIT_STRUCTURAL_LIST AUDIT_GOV_HEADINGS AUDIT_LAW_COUNT AUDIT_WORKER_SECTIONS AUDIT_SCRIPT_LIST AUDIT_SCRIPT_COUNT AUDIT_QUEUE_HEAD AUDIT_ACTIVE_TODO_LINE AUDIT_VERSION_FULL AUDIT_TIMESTAMP
 
 for num in {1..12}; do
   if ! grep -q "^## $num\." "$report"; then
