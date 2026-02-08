@@ -5,6 +5,7 @@ root=$(git rev-parse --show-toplevel)
 cd "$root"
 
 mkdir -p observability/audit scripts/logs
+report="$root/observability/audit/AUDIT.REPORT.md"
 
 required=(
   "observability/audit/AUDIT.README.md"
