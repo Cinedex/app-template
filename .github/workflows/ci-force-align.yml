@@ -7,9 +7,6 @@ permissions:
   contents: write
   actions: read
 
-environment:
-  name: force-align
-
 jobs:
   force-alignment:
     runs-on: ubuntu-latest
