@@ -4,37 +4,38 @@ This list always shows exactly one active TODO. Completed TODOs move to `TODO.co
 
 ## Active TODO
 
-## TODO-000 (Idle placeholder)
+## TODO-075 (Privileged CI Force-Alignment Executor)
 - **TODO Type:** Governance + Automation
-- **Lifecycle:** Idle
+- **Lifecycle:** Implemented → Verified
 - **Criticality:** Critical
 - **Status:** Active
-- **Objective:** Signal that the workspace currently has no active TODO and await the governance steward’s next assignment while the queue stays future-only.
+- **Objective:** Finalize the CI-only force-with-lease executor so the approved artifact can align `origin/master` with the audited canonical commit, and document the governance/law/worker layers that make CI the sole force execution path before closing TODO-074.
 - **Execution Scope:**
-  - [ ] Keep the queue (`queue.md`), roadmap (`ROADMAP.md`), and version artifact (`VERSION.md`) synchronized so the Process Integrity gate can confirm the workspace is ready for the next TODO.
-  - [ ] Ensure the automation/log artifacts (`scripts/logs/*`, `git/branches.md`, `TREE.md`) remain committed after the last verification so auditors can see that the workspace is idle between TODOs.
-  - [ ] Document the idle state in the roadmap and TODO log so future workers know why no TODO is currently active.
-- **Allowed files:** `TODO.md`, `TODO.complete.md`, `ROADMAP.md`, `queue.md`, `VERSION.md`, `TREE.md`.
-- **Verification Contract:** No scripts run while idle; keep the last verification records intact and rerun the mandated scripts when the next TODO activates.
-- **Notes:** This placeholder keeps the canonical queue future-only until a new TODO arrives; it may be closed only when another TODO activates via a full governance briefing.
+-  - [ ] Complete `.github/workflows/ci-force-align.yml` so it checks the approval artifact, validates the approved SHAs, pushes with `git push --force-with-lease origin master`, re-fetches origin, and regenerates `git-branches.md`, the current merge report, and the audit report before uploading the artifacts.
+-  - [ ] Update the enforcement catalog (laws, governance, README, git workflow, and CODEX worker roles) so the Privileged CI Execution Law, the CI-only force alignment section, and the CI Force Executor worker describe why force pushes are CI-bound and how the approval artifact ties into the evidence.
+-  - [ ] Bump `VERSION.md` (patch → 0.3.8.6) with TODO-075 metadata and compatibility/notes describing the addition of the CI-based executor.
+-  - [ ] Confirm the verification stack (`scripts/verify-roadmap-sync.sh`, `scripts/verify-version-sync.sh`, `scripts/process-integrity-sweep.sh`, `scripts/update_tree.sh`) passes after the updates so the tree records the new workflow file.
+- **Allowed files:** `.github/workflows/ci-force-align.yml`, `authority/laws.md`, `GOVERNANCE.md`, `README.md`, `git/workflow.md`, `CODEX.worker.md`, `TODO.md`, `TODO.complete.md`, `ROADMAP.md`, `queue.md`, `VERSION.md`, `TREE.md`, `scripts/logs/error-incidents.md` (only for dispatch/verification failures requiring logging).
+- **Verification Contract:** `bash scripts/verify-roadmap-sync.sh`; `bash scripts/verify-version-sync.sh`; `bash scripts/process-integrity-sweep.sh`; `bash scripts/update_tree.sh`; CI workflow run (`ci-force-align.yml`) that executes the approved force alignment and uploads the required artifacts.
+- **Notes:** Remote canonical alignment (TODO-074) remains blocked until this workflow runs; once CI confirms origin/master matches the approved commit, the post-force confirmation steps resume and TODO-074 can close.
 
-## Future Implementation TODOs## Future Implementation TODOs
-## Future Implementation TODOs## Future Implementation TODOs
+## Future Implementation TODOs
 - None currently queued.
 
 ## Future Governance TODOs
 - **TODO-059:** App Marketplace + Atlas readiness.
--  - **TODO Type:** Governance-Only
--  - **Lifecycle:** Defined
--  - **Criticality:** Non-Critical
--  - **Objective:** Document App Marketplace and Atlas readiness guard rails.
--  - **Execution Scope:**
--    - [ ] Outline marketplace criteria in README and `APP.details.md`.
--    - [ ] Update queue/roadmap entries with integration readiness steps and automation references.
--    - [ ] Cite relevant laws for each guard rail.
--  - **Allowed files:** `README.md`, `APP.details.md`, `queue.md`, `TODO.md`, `TODO.complete.md`, `authority/laws.md`, `ROADMAP.md`, `scripts/update_tree.sh`, `VERSION.md`.
--  - **Verification Contract:** README/governance cite the guard rails, queue records follow-up TODOs, and automation scripts rerun cleanly.
--  - **Post-Completion Expectations:** Update the Feature Registry with the marketplace readiness story.
+  - **TODO Type:** Governance-Only
+  - **Lifecycle:** Defined
+  - **Criticality:** Non-Critical
+  - **Objective:** Document App Marketplace and Atlas readiness guard rails.
+  - **Execution Scope:**
+    - [ ] Outline marketplace criteria in README and `APP.details.md`.
+    - [ ] Update queue/roadmap entries with integration readiness steps and automation references.
+    - [ ] Cite relevant laws for each guard rail.
+  - **Allowed files:** `README.md`, `APP.details.md`, `queue.md`, `TODO.md`, `TODO.complete.md`, `authority/laws.md`, `ROADMAP.md`, `scripts/update_tree.sh`, `VERSION.md`.
+  - **Verification Contract:** README/governance cite the guard rails, the queue records follow-up TODOs, and automation scripts rerun cleanly.
+  - **Post-Completion Expectations:** Update the Feature Registry with the marketplace readiness story.
+
 ## TODO Template (for future use)
 - **Goal:** _Describe the desired outcome._
 - **Allowed files:** _List files the TODO may touch._

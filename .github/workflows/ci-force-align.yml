@@ -1,0 +1,94 @@
+name: CI Force Alignment
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+environment:
+  name: force-align
+
+jobs:
+  force-alignment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up runtime
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Ensure approval artifact exists
+        run: |
+          set -euo pipefail
+          ARTIFACT_FILE=$(ls git/approvals/approved/*-master-force-align.approved 2>/dev/null | head -n 1)
+          if [ -z "$ARTIFACT_FILE" ]; then
+            echo 'Missing force-align approval artifact' >&2
+            exit 1
+          fi
+          echo "Approval artifact: $ARTIFACT_FILE"
+          echo "artifact=$ARTIFACT_FILE" >> "$GITHUB_OUTPUT"
+        id: approval
+
+      - name: Validate approved SHAs
+        run: |
+          set -euo pipefail
+          ARTIFACT_FILE=${{ steps.approval.outputs.artifact }}
+          APPROVED_LOCAL=$(grep -i 'local HEAD' "$ARTIFACT_FILE" | head -n 1 | awk -F ': ' '{print $2}')
+          APPROVED_REMOTE=$(grep -i 'origin/master' "$ARTIFACT_FILE" | head -n 1 | awk -F ': ' '{print $2}')
+          git fetch origin
+          CURRENT_LOCAL=$(git rev-parse HEAD)
+          CURRENT_REMOTE=$(git rev-parse origin/master)
+          if [ "$CURRENT_LOCAL" != "$APPROVED_LOCAL" ]; then
+            echo "Current HEAD $CURRENT_LOCAL does not match approved local SHA $APPROVED_LOCAL" >&2
+            exit 1
+          fi
+          if [ "$CURRENT_REMOTE" != "$APPROVED_REMOTE" ]; then
+            echo "Remote origin/master $CURRENT_REMOTE does not match approved SHA $APPROVED_REMOTE" >&2
+            exit 1
+          fi
+          echo "Approved SHAs verified"
+          echo "local=$APPROVED_LOCAL" >> "$GITHUB_OUTPUT"
+          echo "remote=$APPROVED_REMOTE" >> "$GITHUB_OUTPUT"
+        id: shas
+
+      - name: Force push (approved)
+        run: |
+          set -euo pipefail
+          git push --force-with-lease origin master
+
+      - name: Confirm origin alignment
+        run: |
+          set -euo pipefail
+          git fetch origin
+          EXPECTED=${{ steps.shas.outputs.local }}
+          ACTUAL=$(git rev-parse origin/master)
+          if [ "$ACTUAL" != "$EXPECTED" ]; then
+            echo "Post-push origin/master $ACTUAL does not match approved local SHA $EXPECTED" >&2
+            exit 1
+          fi
+          echo "Origin aligned with $EXPECTED"
+
+      - name: Regenerate canonical evidence
+        run: |
+          set -euo pipefail
+          bash scripts/git-branch-log.sh
+          bash scripts/git-merge-report.sh master master
+          bash scripts/run-audit.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-force-align-artifacts
+          path: |
+            git/branches.md
+            git/merge-reports/
+            observability/audit/
+            scripts/logs/process-integrity.md
+            scripts/logs/error-incidents.md

@@ -61,11 +61,12 @@ Times below are noted in MST (Arizona; UTC-7). The catalog runs in descending or
 
 ### Active TODO
 
-## **TODO-000** (Idle placeholder)
-  - Description: The workspace is idle while the governance steward prepares the next TODO; no active TODO exists until the placeholder is closed.
-  - Status: <span style="color:gray">Active</span> (Idle placeholder).
-  - Date: <span style="color:gray">2026-02-08 15:41 MST</span>.
-  - Notes: The guard rails stay healthy and the queue remains future-only; rerun the verification scripts when a new TODO reactivates the automation cadence.
+## **TODO-075** (Privileged CI Force-Alignment Executor)
+  - Description: Install the `ci-force-align.yml` workflow so the approved artifact can realign `origin/master` via CI, validate the SHAs, regenerate the branch log/merge report/audit, and upload the artifacts before TODO-074 resumes its remote alignment closeout.
+  - Status: <span style="color:green">Active</span> (CI force executor).
+  - Date: <span style="color:gray">2026-02-08 19:52 MST</span>.
+  - Notes: TODO-074 remains blocked on remote alignment until the privileged CI workflow approves and pushes the canonical SHA; once CI succeeds, rerun the Phase 8 closure steps so TODO-074 can close immediately afterward.
+  - References: TODO-075 (Privileged CI Force-Alignment Executor)
 
 ### Completed TODOs (descending)
 

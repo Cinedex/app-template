@@ -2,7 +2,7 @@
 
 ## 1. Audit Header
 - **Repository:** app-platform-template
-- **Commit SHA:** c65139dc95ec9c6e15875934271fa1d65be3d196
+- **Commit SHA:** 7454c17780e4d2aeda10e4203de6e60672f221e4
 - **VERSION.md:** # Platform Template Version Artifact
 
 - **Current Version:** 0.3.8
@@ -33,7 +33,7 @@
 - **Marketing Surface Version:** 0.3.3 (matches MAJOR.MINOR and may lag behind MICRO/PATCH; drift warnings appear when MAJOR.MINOR diverge).
 - **Documentation Version:** 0.3 (matches MAJOR; warns when the canonical MAJOR changes).
 - **Surface Version Notes:** Surface declarations act as compatibility signals—not execution controls. Every surface references `VERSION.md` so the Process Integrity sweep and Progress Watchdog can surface drift warnings tied to the canonical platform version.
-- **Snapshot timestamp (UTC):** 2026-02-08T22:39:46Z
+- **Snapshot timestamp (UTC):** 2026-02-08T23:33:41Z
 
 ## 2. Structural Audit
 - Observed top-level directories: .githooks, .github, authority, features, git, marketing, observability, pulse, scripts.

@@ -506,3 +506,49 @@
 6. **Remediation:** Update ROADMAP.md so the Active TODO section references TODO-073.
 7. **Affected files:** /Users/levielizaga/Sites/app-platform-template/ROADMAP.md
 8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh
+- TODO-074 | 2026-02-08T23:34:03Z | command `git push --force-with-lease origin master` blocked by sandbox | local HEAD 7454c17780e4d2aeda10e4203de6e60672f221e4 | origin/master 3b9753046a66de6ef32631a23844101098986bad | requires external execution outside sandbox
+1. **Date (UTC):** 2026-02-09T00:42:51Z
+2. **Version:** 0.3.8.5
+3. **Service/App:** Remote Alignment Check
+4. **Description:** REMOTE NOT ALIGNED — origin/master != master
+5. **TODO reference:** TODO-074
+6. **Remediation:** Re-run force-with-lease outside sandbox using approved artifact git/approvals/approved/20260208T233330Z-master-force-align.approved
+7. **Local SHA:** 7454c17780e4d2aeda10e4203de6e60672f221e4
+8. **Remote SHA:** 3b9753046a66de6ef32631a23844101098986bad
+9. **Note:** Remote must be aligned before closing TODO-074; entry recorded for governance traceability
+1. **Date (UTC):** 2026-02-09T02:09:09Z
+2. **Version:** 0.3.8.5
+3. **Service/App:** Force Alignment Push
+4. **Description:** git push --force-with-lease origin master blocked by sandbox policy
+5. **TODO reference:** TODO-074
+6. **Remediation:** Run `git push --force-with-lease origin master` outside the sandbox after approval artifact `git/approvals/approved/20260208T233330Z-master-force-align.approved` and reconfirm remote alignment
+7. **Local SHA:** 7454c17780e4d2aeda10e4203de6e60672f221e4
+8. **Remote SHA:** 3b9753046a66de6ef32631a23844101098986bad
+9. **Note:** Command rejected with policy message "CreateProcess {... 'git push --force-with-lease origin master' ... blocked by policy }"
+1. **Date (UTC):** 2026-02-09T02:19:53Z
+2. **Version:** 0.3.8.5
+3. **Service/App:** Force Alignment Push Retry
+4. **Description:** git push --force-with-lease origin master still blocked by sandbox policy
+5. **TODO reference:** TODO-074
+6. **Remediation:** Execute `git push --force-with-lease origin master` outside the sandbox (approval artifact git/approvals/approved/20260208T233330Z-master-force-align.approved still valid)
+7. **Local SHA:** 7454c17780e4d2aeda10e4203de6e60672f221e4
+8. **Remote SHA:** 3b9753046a66de6ef32631a23844101098986bad
+9. **Note:** Policy rejection repeats "blocked by policy" despite retries
+
+1. **Date (UTC):** 2026-02-09T02:59:29Z
+2. **Version:** 0.3.8
+3. **Service/App:** Version Sync Gate
+4. **Description:** Merge report /Users/levielizaga/Sites/app-platform-template/git/merge-reports/merge-report-master-20260208T233155Z.md omits the Bumped By TODO.
+5. **TODO reference:** TODO-075
+6. **Remediation:** Include the bumped TODO reference when rerunning scripts/git-merge-report.sh.
+7. **Affected files:** /Users/levielizaga/Sites/app-platform-template/git/merge-reports/merge-report-master-20260208T233155Z.md
+8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh, scripts/verify-version-sync.sh
+
+1. **Date (UTC):** 2026-02-09T02:59:35Z
+2. **Version:** 0.3.8
+3. **Service/App:** Version Sync Gate
+4. **Description:** Neither ROADMAP.md nor TODO.complete.md references TODO-075 (Privileged CI Force-Alignment Executor).
+5. **TODO reference:** TODO-075
+6. **Remediation:** Document TODO-075 (Privileged CI Force-Alignment Executor) in the roadmap/completed log so the version bump is traceable.
+7. **Affected files:** /Users/levielizaga/Sites/app-platform-template/ROADMAP.md, /Users/levielizaga/Sites/app-platform-template/TODO.complete.md
+8. **Automation/log pointer:** scripts/verify-roadmap-sync.sh, scripts/verify-version-sync.sh

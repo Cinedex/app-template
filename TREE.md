@@ -32,7 +32,9 @@ This tree summarizes the current control documents and must be updated whenever 
 - `features/FEATURE.REGISTRY.md`
 - `git/.DS_Store`
 - `git/approvals/README.md`
+- `git/approvals/approved/20260208T233330Z-master-force-align.approved`
 - `git/branches.md`
+- `git/merge-reports/divergence-master-20260208T233218Z.md`
 - `git/merge-reports/merge-report-demo.md`
 - `git/merge-reports/merge-report-main-20260205T023255Z.md`
 - `git/merge-reports/merge-report-main-20260205T030926Z.md`
@@ -72,6 +74,8 @@ This tree summarizes the current control documents and must be updated whenever 
 - `git/merge-reports/merge-report-master-20260206T204027Z.md`
 - `git/merge-reports/merge-report-master-20260208T215240Z.md`
 - `git/merge-reports/merge-report-master-20260208T223606Z.md`
+- `git/merge-reports/merge-report-master-20260208T233155Z.md`
+- `git/merge-reports/merge-report-master-20260209T025932Z.md`
 - `git/versioning.md`
 - `git/workflow.md`
 - `marketing/status.md`
